@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Alitas 2x1",
+    "date": "2015-07-01T06:58:16.606Z",
+    "content": "Ven a Lucky Irish Pub!",
+    "location": {
+      "lat": 31.868582,
+      "lng": -116.628283
+    },
+    "live": false,
+    "id": "55b84b359e4f6206274840d0",
+    "localeId": "55d694975241cb03001fe24d"
+  },
+  {
+    "title": "Bowl y bebida por $50",
+    "date": "2015-07-01T06:58:16.606Z",
+    "content": "Te esperamos en Juanitos!",
+    "location": {
+      "lat": 31.877069,
+      "lng": -116.620983
+    },
+    "live": false,
+    "id": "55b84b959e4f6206274840d1"
+  },
+  {
+    "title": "Tu primer vaso 2x1",
+    "date": "2015-07-01T06:58:16.606Z",
+    "content": "Solo por hoy en Wendlant",
+    "location": {
+      "lat": 31.861955,
+      "lng": -116.626289
+    },
+    "live": false,
+    "id": "55b84be49e4f6206274840d2"
+  },
+  {
+    "title": "Bebida gratis con tu comida",
+    "date": "2015-07-01T06:58:16.606Z",
+    "content": "Ven a Makukos",
+    "location": {
+      "lat": 31.852282,
+      "lng": -116.615732
+    },
+    "live": false,
+    "id": "55b84c4e9e4f6206274840d3"
+  }
+]

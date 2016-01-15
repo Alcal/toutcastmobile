@@ -1,0 +1,30 @@
+/* Empty. Add your own CSS if you like */
+.tc-img-circle {
+    border-radius: 50%;
+}
+
+.tc-profile-pic
+{
+	height: 30%;
+	width: 30%;
+	padding: 1vmin;
+	display: inline;
+}
+
+.tc-profile-info
+{
+	display: inline;
+	vertical-align: top;
+	padding: 5vmin 5vmin 5vmin 0vmin;
+	font-size: medium;
+	font-weight: bold;	
+}
+
+.tc-menu-bg
+{
+	background-image: url('../img/menu-bg.png');
+	background-repeat: no-repeat;
+	background-position: center top;
+	vertical-align: top;
+	padding: 5px;
+}
