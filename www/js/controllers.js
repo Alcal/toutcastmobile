@@ -55,11 +55,11 @@ angular.module('starter.controllers', [])
 })
 .controller('LandingCtrl', function($scope, $stateParams) {
 })
-.controller('MainMapCtrl', function($scope, $stateParams, $cordovaGeolocation) {
+.controller('MainMapCtrl', function($scope, $stateParams, $cordovaGeolocation, $http) {
   var options = {timeout: 10000, enableHighAccuracy: true};
- 
+  $scope.lastInfoWindow;
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
- 
+  
     var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
  
     var mapOptions = {
@@ -76,27 +76,41 @@ angular.module('starter.controllers', [])
  
       var contentString="hello stranger!";
 
-      var infowindow = new google.maps.InfoWindow({
-        content: contentString
-      });
-
       var markerIcon = 
         {
-          size: new google.maps.Size(49, 51),
-          scaledSize: new google.maps.Size(49, 51),
+          size: new google.maps.Size(39, 41),
+          scaledSize: new google.maps.Size(39, 41),
           url: 'img/map-marker.png'
         };
-      var marker = new google.maps.Marker({
-          map: $scope.map,
-          animation: google.maps.Animation.DROP,
-          position: latLng,
-          icon: markerIcon,
-          title:"Le Tit"
-      }); 
-      marker.addListener('click', function() {
-        infowindow.open($scope.map, marker);
-      });  
- 
+
+      $http.get('js/json/touts.json')
+       .then(function(res){
+          $scope.touts = res.data; 
+
+          for(var x=0; x < $scope.touts.length; x++)
+          {
+              $scope.touts[x].marker = new google.maps.Marker({
+                  title:$scope.touts[x].title,
+                  position: new google.maps.LatLng($scope.touts[x].location.lat, $scope.touts[x].location.lng),
+                  map: $scope.map,
+                  animation: google.maps.Animation.DROP,          
+                  icon: markerIcon         
+              }); 
+              $scope.touts[x].marker.infowindow = new google.maps.InfoWindow({
+                content: getInfoWindow($scope.touts[x])
+              });  
+              $scope.touts[x].marker.addListener('click', function() {
+                if($scope.lastInfoWindow)
+                {
+                  $scope.lastInfoWindow.close();
+                };
+                $scope.map.setZoom(15);
+                $scope.map.setCenter(this.getPosition());
+                this.infowindow.open($scope.map, this);
+                $scope.lastInfoWindow = this.infoWindow;
+              }); 
+          }               
+        });
   }, function(error){
     console.log("Could not get location");
   });
@@ -111,3 +125,8 @@ angular.module('starter.controllers', [])
           $scope.touts = res.data;                
         });
 });
+
+var getInfoWindow = function (tout)
+{
+  return '<div class=\"item item-avatar\"><img></img><h3>'+tout.title+'</h3><p>'+tout.content+'</p></div>';
+};
