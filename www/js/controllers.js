@@ -57,7 +57,7 @@ angular.module('starter.controllers', [])
 })
 .controller('MainMapCtrl', function($scope, $stateParams, $cordovaGeolocation, $http) {
   var options = {timeout: 10000, enableHighAccuracy: true};
-  $scope.lastInfoWindow;
+  $scope.lastInfoWindow = null;
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
   
     var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -97,27 +97,45 @@ angular.module('starter.controllers', [])
               $scope.touts[x].marker.infowindow = new google.maps.InfoWindow({
                 content: getInfoWindow($scope.touts[x])
               });
-
-              google.maps.event.addListener($scope.touts[x].marker.infowindow, 'domready', function() {
-
-                 // Reference to the DIV which receives the contents of the infowindow using jQuery
-                 var iwOuter = angular.element('.gm-style-iw');
-                 var iwBackground = iwOuter.prev();
-                 iwBackground.children(':nth-child(2)').css({'display' : 'none'});
-                 iwBackground.children(':nth-child(4)').css({'display' : 'none'});
-
-              });
-                
               $scope.touts[x].marker.addListener('click', function() {
                 if($scope.lastInfoWindow)
                 {
-                  $scope.lastInfoWindow.close();
+                    $scope.lastInfoWindow.close();
                 };
                 $scope.map.setZoom(15);
                 $scope.map.setCenter(this.getPosition());
                 this.infowindow.open($scope.map, this);
                 $scope.lastInfoWindow = this.infowindow;
               }); 
+
+              google.maps.event.addListener($scope.touts[x].marker.infowindow, 'domready', function() {
+
+                // Reference to the DIV which receives the contents of the infowindow using jQuery
+                var iwOuter = angular.element('.gm-style-iw');
+                var iwBackground = iwOuter.prev();
+                iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+                iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+                var iwCloseBtn = iwOuter.next();
+
+                // Apply the desired effect to the close button
+                iwCloseBtn.css({
+                  height:'30px',
+                  width:'30px',
+                  opacity: '1', // by default the close button has an opacity of 0.7
+                  right: '8px', top: '3px', // button repositioning
+                  border: '7px solid #cad95b', // increasing button border and new color
+                  'border-radius': '13px', // circular effect
+                  'box-shadow': '0 0 5px #3990B9' // 3D effect to highlight the button
+                });
+
+                // The API automatically applies 0.7 opacity to the button after the mouseout event.
+                // This function reverses this event to the desired value.
+                iwCloseBtn.mouseout(function(){
+                  $(this).css({opacity: '1'});
+                });
+              });
+                
+              
           }               
         });
       }, function(error){
@@ -134,5 +152,5 @@ angular.module('starter.controllers', [])
 
 var getInfoWindow = function (tout)
 {
-  return '<div class=\"\"><img class=\"tc-img-circle\"></img><h5>'+tout.title+'</h5><p>'+tout.content+'</p></div>';
+  return '<div class=\"item item-avatar\"><img class=\"tc-img-circle\"></img><h3>'+tout.title+'</h3><p>'+tout.content+'</p></div>';
 };
