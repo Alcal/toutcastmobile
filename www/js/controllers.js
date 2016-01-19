@@ -119,13 +119,13 @@ angular.module('starter.controllers', [])
 
                 // Apply the desired effect to the close button
                 iwCloseBtn.css({
-                  height:'30px',
-                  width:'30px',
+                  height:'27px',
+                  width:'27px',
                   opacity: '1', // by default the close button has an opacity of 0.7
-                  right: '8px', top: '3px', // button repositioning
-                  border: '7px solid #cad95b', // increasing button border and new color
+                  right: '5px', top: '3px', // button repositioning
+                  border: '7px solid #69a33f', // increasing button border and new color
                   'border-radius': '13px', // circular effect
-                  'box-shadow': '0 0 5px #3990B9' // 3D effect to highlight the button
+                  'box-shadow': '0 0 5px #66a17b' // 3D effect to highlight the button
                 });
 
                 // The API automatically applies 0.7 opacity to the button after the mouseout event.
