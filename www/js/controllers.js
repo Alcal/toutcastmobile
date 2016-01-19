@@ -74,8 +74,6 @@ angular.module('starter.controllers', [])
 
      google.maps.event.addListenerOnce($scope.map, 'idle', function(){
  
-      var contentString="hello stranger!";
-
       var markerIcon = 
         {
           size: new google.maps.Size(39, 41),
@@ -98,7 +96,18 @@ angular.module('starter.controllers', [])
               }); 
               $scope.touts[x].marker.infowindow = new google.maps.InfoWindow({
                 content: getInfoWindow($scope.touts[x])
-              });  
+              });
+
+              google.maps.event.addListener($scope.touts[x].marker.infowindow, 'domready', function() {
+
+                 // Reference to the DIV which receives the contents of the infowindow using jQuery
+                 var iwOuter = angular.element('.gm-style-iw');
+                 var iwBackground = iwOuter.prev();
+                 iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+                 iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+              });
+                
               $scope.touts[x].marker.addListener('click', function() {
                 if($scope.lastInfoWindow)
                 {
@@ -107,17 +116,14 @@ angular.module('starter.controllers', [])
                 $scope.map.setZoom(15);
                 $scope.map.setCenter(this.getPosition());
                 this.infowindow.open($scope.map, this);
-                $scope.lastInfoWindow = this.infoWindow;
+                $scope.lastInfoWindow = this.infowindow;
               }); 
           }               
         });
-  }, function(error){
-    console.log("Could not get location");
-  });
-
-
- 
-}); 
+      }, function(error){
+      console.log("Could not get location");
+    }); 
+  }); 
 })
 .controller('MainFeedCtrl', function($scope, $stateParams, $http){
   $http.get('js/json/touts.json')
@@ -128,5 +134,5 @@ angular.module('starter.controllers', [])
 
 var getInfoWindow = function (tout)
 {
-  return '<div class=\"item item-avatar\"><img></img><h3>'+tout.title+'</h3><p>'+tout.content+'</p></div>';
+  return '<div class=\"\"><img class=\"tc-img-circle\"></img><h5>'+tout.title+'</h5><p>'+tout.content+'</p></div>';
 };
