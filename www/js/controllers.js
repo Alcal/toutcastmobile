@@ -78,7 +78,8 @@ angular.module('starter.controllers', [])
         {
           size: new google.maps.Size(39, 41),
           scaledSize: new google.maps.Size(39, 41),
-          url: 'img/map-marker.png'
+          url: 'img/map-marker.png',
+          anchor: {x:15, y:41}
         };
 
       $http.get('js/json/touts.json')
@@ -92,7 +93,7 @@ angular.module('starter.controllers', [])
                   position: new google.maps.LatLng($scope.touts[x].location.lat, $scope.touts[x].location.lng),
                   map: $scope.map,
                   animation: google.maps.Animation.DROP,          
-                  icon: markerIcon         
+                  icon: markerIcon     
               }); 
               $scope.touts[x].marker.infowindow = new google.maps.InfoWindow({
                 content: getInfoWindow($scope.touts[x])
