@@ -19,6 +19,52 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    // kick off the platform web client
+    Ionic.io();
+
+    var settings = new Ionic.IO.Settings();
+    var app_id = settings.get('app_id');
+    console.log('TOUTCAST: App ID is: '+app_id);
+
+    // this will give you a fresh user or the previously saved 'current user'
+    var user = Ionic.User.current();
+
+    // if the user doesn't have an id, you'll need to give it one.
+    if (!user.id) {
+      user.id = Ionic.User.anonymousId();
+      // user.id = 'your-custom-user-id';
+    }
+
+    var push = new Ionic.Push({
+      "debug": true,
+      "onNotification": function(notification) {
+        var payload = notification.payload;
+        console.log(notification, payload);
+      },
+      "onRegister": function(data) {
+        console.log(data.token);
+      },
+      "pluginConfig": {
+        "ios": {
+          "badge": true,
+          "sound": true
+         },
+         "android": {
+           "iconColor": "#387ef5"
+         }
+      } 
+    });
+
+    push.register(function(token) {
+      console.log("TOUTCAST: Token is:");
+      console.log(token.token);
+    });
+
+    console.log('TOUTCAST: User id is: '+user.id);
+
+    //persist the user
+    user.save();
   });
 })
 
