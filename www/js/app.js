@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ngCordova','starter.controllers'])
+angular.module('starter', ['ionic','ionic.service.core','ngCordova','starter.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -27,14 +27,46 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers'])
     var app_id = settings.get('app_id');
     console.log('TOUTCAST: App ID is: '+app_id);
 
-    // this will give you a fresh user or the previously saved 'current user'
-    var user = Ionic.User.current();
 
-    // if the user doesn't have an id, you'll need to give it one.
-    if (!user.id) {
-      user.id = Ionic.User.anonymousId();
-      // user.id = 'your-custom-user-id';
-    }
+    var details = {
+      'email': 'acalo91@gmail.com',
+      'password': 'password',
+      'name':'Alex'
+    };
+    Ionic.Auth.signup(details).then(
+      function()
+      {
+        console.log('TOUTCAST: Signup success');
+        Ionic.Auth.login('basic', {'remember':true}, details).then(
+          function()
+          {
+            console.log('TOUTCAST: Auth success')
+            var user = Ionic.User.current();
+          }, 
+          function()
+          {
+            console.log('TOUTCAST: Auth Failure')
+          });
+        
+      },
+     function(e)
+     {
+        console.log('TOUTCAST: signup failure'); 
+        console.log(JSON.stringify(e));
+      });
+
+    Ionic.Auth.login('basic', {'remember':true}, details).then(
+      function()
+      {
+        console.log('TOUTCAST: Auth success')
+        var user = Ionic.User.current();
+      }, 
+      function(e)
+      {
+        console.log('TOUTCAST: Auth Failure');
+        console.log(JSON.stringify(e));
+      });
+    
 
     var push = new Ionic.Push({
       "debug": true,
@@ -43,7 +75,9 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers'])
         console.log(notification, payload);
       },
       "onRegister": function(data) {
-        console.log(data.token);
+        console.log('TOUTCAST: Register successful');
+        console.log('TOUTCAST: '+data.token);
+        push.saveToken(push.token);
       },
       "pluginConfig": {
         "ios": {
@@ -51,19 +85,13 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers'])
           "sound": true
          },
          "android": {
-           "iconColor": "#387ef5"
+            "iconColor": "#387ef5",
+            "sound": true
          }
       } 
     });
 
-    push.register(function(token) {
-      console.log("TOUTCAST: Token is:");
-      console.log(token.token);
-    });
-
-    console.log('TOUTCAST: User id is: '+user.id);
-
-    //persist the user
+    var user = Ionic.User.current();
     user.save();
   });
 })

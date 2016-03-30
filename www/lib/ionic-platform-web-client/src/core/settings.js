@@ -30,11 +30,10 @@ export class Settings {
   constructor() {
     this._locations = {
       'api': 'https://apps.ionic.io',
-      'api_key': 'a1e7df6b',
-      'gcm_key':'1062031472499',
       'push': 'https://push.ionic.io',
       'analytics': 'https://analytics.ionic.io',
-      'deploy': 'https://apps.ionic.io'
+      'deploy': 'https://apps.ionic.io',
+      'platform-api': 'https://api.ionic.io'
     };
     this._devLocations = this.get('dev_locations');
     if (!this._devLocations) { this._devLocations = {}; }
