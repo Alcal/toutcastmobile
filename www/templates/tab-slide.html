@@ -1,0 +1,23 @@
+<ion-view title="Slide" hide-nav-bar="true">
+	<ion-content class="content dark-bg" style="overflow: hidden;" has-header="false">
+		<div ng-if="loading" class="loading-view positive-bg">
+			<p class="light">Redeming...</p>
+			<ion-spinner icon="ripple" class="spinner-light" style="margin-right: auto; margin-left: auto;">
+			</ion-spinner>
+		</div>
+		<div class="crescent-container">
+			<div class="circular crescent positive-bg grow" ng-style="crescentStyle" ></div>				
+			<div class="circular crescent positive-bg grow" ng-if="grown" ></div>		
+			<div class="circular crescent light-bg grow" ng-if="loading"></div>
+		</div>
+		<ion-scroll delegate-handle="slide-track" style="width: 30%; height: 110%; bottom:0px; margin-right: auto; margin-left: auto;" >
+			<div on-touch="disableScrolling()" on-release="enableScrolling()" style="height:80%"></div>
+			<ion-item href="#" class="item-calm sleigh" on-drag-up="onDragUp()" on-release="onSleighRelease()" direction="y" style="height:15%">
+				<h2>Sleigh</h2>
+				<p>{{slideTrack.getScrollPosition().top}}</p>
+			</ion-item>
+			<div style="height:110%"></div>
+		</ion-scroll>
+
+	</ion-content>
+</ion-view>
