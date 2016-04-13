@@ -1,6 +1,6 @@
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
-    <ion-nav-bar class="bar-calm">
+    <ion-nav-bar class="bar-positive">
       <ion-nav-back-button>
       </ion-nav-back-button>
 
@@ -20,19 +20,20 @@
           Alejandro Castro
         </div>
       </div>
-      <ion-list>
-        <ion-item class="item-icon-left" menu-close ui-sref="app.home">
+      <ion-list class="list">
+        <ion-item class="item item-icon-left ink ink-dark" menu-close ui-sref="app.home">
           <i class="icon ion-android-home"></i>
           Home
         </ion-item>
-        <ion-item class="item-icon-left" menu-close ng-click="login()">
+        <ion-item class="item item-icon-left ink ink-dark" menu-close ng-click="login()">
+          <i class="icon ion-log-in"></i>
           Login
         </ion-item>
-        <ion-item class="item-icon-left" menu-close href="#/app/playlists">
+        <ion-item class="item item-icon-left ink ink-dark" menu-close ng-click="login()">
           <i class="icon ion-android-settings"></i>
           Options
         </ion-item>
-        <ion-item class="item-icon-left" menu-close href="#/app/landing">
+        <ion-item class="item item-icon-left ink ink-dark" menu-close href="#">
           <i class="icon ion-android-favorite"></i>
           Favorites
         </ion-item>

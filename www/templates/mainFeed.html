@@ -1,7 +1,12 @@
 <ion-view view-title="ToutCast">  
   <ion-content>
    <div class="list">
-   	<a href="#" class="item item-avatar" ng-repeat="t in touts">
+   	<a href="#" class="item item-avatar">
+   		<img></img>
+   		<h3>Test</h3>
+   		<p>Tasty test</p>
+   	</a>
+   	<a href="#/app/home/feed/1" class="item item-avatar" ng-repeat="t in touts">
    		<img></img>
    		<h3>{{t.title}}</h3>
    		<p>{{t.content}}</p>

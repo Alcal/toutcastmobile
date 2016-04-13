@@ -1,6 +1,6 @@
 angular.module('toutcast.controllers.map', [])
 
-.controller('MainMapCtrl', function($scope, $stateParams, $cordovaGeolocation, $http) {
+.controller('MainMapCtrl', function($scope, $stateParams, $cordovaGeolocation, $http, ionicMaterialInk) {
   var options = {timeout: 10000, enableHighAccuracy: true};
   $scope.lastInfoWindow = null;
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
@@ -80,12 +80,21 @@ angular.module('toutcast.controllers.map', [])
                   $(this).css({opacity: '1'});
                 });
               });
-                
-              
-          }               
+          }
+          ionicMaterialInk.displayEffect({duration:600});                  
         });
       }, function(error){
       console.log("Could not get location");
     }); 
   }); 
+
+
+  ionicMaterialInk.displayEffect({duration:600});
+
+  var getInfoWindow = function (tout)
+  {
+    return '<div class=\"item item-avatar\"><img class=\"tc-img-circle\"></img><h3>'+tout.title+'</h3><p>'+tout.content+'</p></div>';
+  };
 })
+
+

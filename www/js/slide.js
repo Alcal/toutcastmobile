@@ -1,7 +1,7 @@
-angular.module('starter.controllers.slide',['ngAnimate'])
+angular.module('toutcast.controllers.slide',['ngAnimate'])
 
 .controller('SlideCtrl', 
-	function($scope, $ionicScrollDelegate)
+	function($scope, $stateParams, $ionicScrollDelegate, ionicMaterialInk)
 	{
 		// $scope.$on('$ionicView.enter', function(e) {
 		// 	//$ionicScrollDelegate.
@@ -10,14 +10,14 @@ angular.module('starter.controllers.slide',['ngAnimate'])
   		$scope.slideTrack = $ionicScrollDelegate.$getByHandle('slide-track');
   		$scope.status={position:0};
   		$scope.grown = false;
-  		$scope.loading = false;
+  		$scope.loadingTout = false;
 
 		$scope.$watch('slideTrack.getScrollPosition().top',function(newValue, oldValue)
 		{
 			$scope.crescentStyle.height = newValue*2.1+'px';
 			$scope.crescentStyle.width = newValue*2.1+'px';
 			if(newValue>500)
-				$scope.loading = true;
+				$scope.loadingTout = true;
 		});
 
 		$scope.onSleighRelease = function(e)
@@ -26,7 +26,7 @@ angular.module('starter.controllers.slide',['ngAnimate'])
 			{
 				$scope.slideTrack.scrollTop(true);
 				$scope.grown = false;
-				$scope.loading = false;
+				$scope.loadingTout = false;
 			}
 			else
 			{
@@ -65,5 +65,7 @@ angular.module('starter.controllers.slide',['ngAnimate'])
 			// $scope.crescentStyle.width = slideTrack.getScrollPosition().top*2.1+'px';
 
 		};
+  		ionicMaterialInk.displayEffect({duration:600});
+
 	
 });

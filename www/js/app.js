@@ -4,8 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ionic.service.core','ngCordova','starter.controllers'])
-angular.module('toutcast', ['ionic','ngCordova','toutcast.controllers'])
+angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.controllers','toutcast.services', 'ionic-material','LocalStorageModule','lbServices','ngAnimate'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -37,35 +36,35 @@ angular.module('toutcast', ['ionic','ngCordova','toutcast.controllers'])
     Ionic.Auth.signup(details).then(
       function()
       {
-        console.log('TOUTCAST: Signup success');
+        //console.log('TOUTCAST: Signup success');
         Ionic.Auth.login('basic', {'remember':true}, details).then(
           function()
           {
-            console.log('TOUTCAST: Auth success')
+            //console.log('TOUTCAST: Auth success')
             var user = Ionic.User.current();
           }, 
           function()
           {
-            console.log('TOUTCAST: Auth Failure')
+            //console.log('TOUTCAST: Auth Failure')
           });
         
       },
      function(e)
      {
-        console.log('TOUTCAST: signup failure'); 
-        console.log(JSON.stringify(e));
+        //console.log('TOUTCAST: signup failure'); 
+        //console.log(JSON.stringify(e));
       });
 
     Ionic.Auth.login('basic', {'remember':true}, details).then(
       function()
       {
-        console.log('TOUTCAST: Auth success')
+        //console.log('TOUTCAST: Auth success')
         var user = Ionic.User.current();
       }, 
       function(e)
       {
         console.log('TOUTCAST: Auth Failure');
-        console.log(JSON.stringify(e));
+        //console.log(JSON.stringify(e));
       });
     
 
@@ -124,25 +123,6 @@ angular.module('toutcast', ['ionic','ngCordova','toutcast.controllers'])
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  })
 
   .state('app.home.landing',{
     url:'/landing', 
@@ -150,6 +130,15 @@ angular.module('toutcast', ['ionic','ngCordova','toutcast.controllers'])
       'landingContent':{
         templateUrl:'templates/landing.html',
         controller: 'LandingCtrl'
+      }
+    }
+  })
+  .state('app.home.profile',{
+    url:'/profile',
+    views:{
+      'profileContent':{
+        templateUrl:'templates/profile.html',
+        controller: 'ProfileCtrl'
       }
     }
   })
@@ -168,6 +157,15 @@ angular.module('toutcast', ['ionic','ngCordova','toutcast.controllers'])
       'mainFeedContent':{
         templateUrl:'templates/mainFeed.html',
         controller: 'MainFeedCtrl'
+      }
+    }
+  })
+  .state('app.home.feed-detail',{
+    url:'/feed/:toutId', 
+    views:{
+      'mainFeedContent':{
+        templateUrl:'templates/tab-slide.html',
+        controller: 'SlideCtrl'
       }
     }
   });

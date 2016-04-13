@@ -55,11 +55,11 @@
     right: -9999px;
     margin: auto;
     z-index: 1000;
-    width: 30vw;
-    height: 20vw;
+    width: 30vmin;
+    height: 20vmin;
 }
 
-.circular
+.circularDiv
 {
 	border-radius: 50%;
 }
@@ -114,8 +114,8 @@
 }
  
 .grow.ng-enter.ng-enter-active {
-	width: 1000px;
-	height: 1000px;
+	width: 200vmax;
+	height: 200vmax;
 }
 
 .grow.ng-leave {

@@ -1,6 +1,6 @@
-angular.module('toutcast.controllers', ['toutcast.controllers.map'])
+angular.module('toutcast.controllers', ['toutcast.controllers.map','toutcast.controllers.feed', 'toutcast.controllers.slide', 'toutcast.controllers.profile'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, ionicMaterialInk) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -27,6 +27,7 @@ angular.module('toutcast.controllers', ['toutcast.controllers.map'])
   // Open the login modal
   $scope.login = function() {
     $scope.modal.show();
+    ionicMaterialInk.displayEffect({duration:600});
   };
 
   // Perform the login action when the user submits the login form
@@ -39,16 +40,83 @@ angular.module('toutcast.controllers', ['toutcast.controllers.map'])
       $scope.closeLogin();
     }, 1000);
   };
+
+  ////////////////////////////////////////
+    // Layout Methods
+    ////////////////////////////////////////
+
+    $scope.hideNavBar = function() {
+        document.getElementsByTagName('ion-nav-bar')[0].style.display = 'none';
+    };
+
+    $scope.showNavBar = function() {
+        document.getElementsByTagName('ion-nav-bar')[0].style.display = 'block';
+    };
+
+    $scope.noHeader = function() {
+        var content = document.getElementsByTagName('ion-content');
+        for (var i = 0; i < content.length; i++) {
+            if (content[i].classList.contains('has-header')) {
+                content[i].classList.toggle('has-header');
+            }
+        }
+    };
+
+    $scope.setExpanded = function(bool) {
+        $scope.isExpanded = bool;
+    };
+
+    $scope.setHeaderFab = function(location) {
+        var hasHeaderFabLeft = false;
+        var hasHeaderFabRight = false;
+
+        switch (location) {
+            case 'left':
+                hasHeaderFabLeft = true;
+                break;
+            case 'right':
+                hasHeaderFabRight = true;
+                break;
+        }
+
+        $scope.hasHeaderFabLeft = hasHeaderFabLeft;
+        $scope.hasHeaderFabRight = hasHeaderFabRight;
+    };
+
+    $scope.hasHeader = function() {
+        var content = document.getElementsByTagName('ion-content');
+        for (var i = 0; i < content.length; i++) {
+            if (!content[i].classList.contains('has-header')) {
+                content[i].classList.toggle('has-header');
+            }
+        }
+
+    };
+
+    $scope.hideHeader = function() {
+        $scope.hideNavBar();
+        $scope.noHeader();
+    };
+
+    $scope.showHeader = function() {
+        $scope.showNavBar();
+        $scope.hasHeader();
+    };
+
+    $scope.clearFabs = function() {
+        var fabs = document.getElementsByClassName('button-fab');
+        if (fabs.length && fabs.length > 1) {
+            fabs[0].remove();
+        }
+    };
+  
+  ionicMaterialInk.displayEffect({duration:600});
 })
 
-.controller('LandingCtrl', function($scope, $stateParams) {
+.controller('LandingCtrl', function($scope, $stateParams, ionicMaterialInk) {
+  console.log('Landing active');
+  ionicMaterialInk.displayEffect({duration:600});
 })
 
-.controller('MainFeedCtrl', function($scope, $stateParams){
 
-});
 
-var getInfoWindow = function (tout)
-{
-  return '<div class=\"item item-avatar\"><img class=\"tc-img-circle\"></img><h3>'+tout.title+'</h3><p>'+tout.content+'</p></div>';
-};
