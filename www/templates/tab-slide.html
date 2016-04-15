@@ -10,7 +10,7 @@
 			<div class="circularDiv crescent positive-bg grow" ng-if="grown" ></div>		
 			<div class="circularDiv crescent light-bg grow" ng-if="loadingTout"></div>
 		</div>
-		<ion-scroll delegate-handle="slide-track" style="width: 40%; height: 110%; bottom:0px; margin-right: auto; margin-left: auto;" >
+		<ion-scroll scrollbar-x="false" scrollbar-y="false" delegate-handle="slide-track" style="width: 40%; height: 110%; bottom:0px; margin-right: auto; margin-left: auto;" >
 			<div on-touch="disableScrolling()" on-release="enableScrolling()" style="height:80%"></div>
 			<ion-item href="#" class=" item-balanced item-text-wrap ink ink-light sleigh" on-drag-up="onDragUp()" on-release="onSleighRelease()" direction="y" style="height:15%;overflow: hidden">
 				<h2>Primer Vaso Gratis</h2>
