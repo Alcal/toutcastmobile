@@ -86,6 +86,11 @@
 	vertical-align: bottom;
 }
 
+.map-item
+{
+	border-width: 0px;
+}
+
 .sleigh
 {
 	z-index: 500;
@@ -126,4 +131,9 @@
 .grow.ng-leave.ng-leave-active {
 	width: 0px;
 	height: 0px;
+}
+
+.close-icon
+{
+  font-size: 17px;
 }

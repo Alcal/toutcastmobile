@@ -13,6 +13,7 @@
   <allow-navigation href="https://maps.googleapis.com/maps/*"/>
   <allow-navigation href="https://apps.ionic.io/*"/>
   <allow-navigation href="file:///android_asset/*"/>
+  <allow-navigation href="http://code.jquery.com/*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>

@@ -12,7 +12,8 @@ angular.module('toutcast.controllers.map', [])
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       mapTypeControl:false,
-      streetViewControl:false
+      streetViewControl:false,
+      disableAutoPan:true
     };
  
     $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
@@ -59,6 +60,11 @@ angular.module('toutcast.controllers.map', [])
                 // Reference to the DIV which receives the contents of the infowindow using jQuery
                 var iwOuter = angular.element('.gm-style-iw');
                 var iwBackground = iwOuter.prev();
+                var iwInner = iwOuter.children(':nth-child(1)');
+                iwInner.css({"display": "inline-block",
+                            "max-height": "465px",
+                            "width": "275px",
+                            "max-width": "275px"});
                 iwBackground.children(':nth-child(2)').css({'display' : 'none'});
                 iwBackground.children(':nth-child(4)').css({'display' : 'none'});
                 var iwCloseBtn = iwOuter.next();
@@ -68,11 +74,27 @@ angular.module('toutcast.controllers.map', [])
                   height:'27px',
                   width:'27px',
                   opacity: '1', // by default the close button has an opacity of 0.7
-                  right: '5px', top: '3px', // button repositioning
-                  border: '7px solid #69a33f', // increasing button border and new color
+                  left: '265px', top: '3px', // button repositioning
+                  border: '4px solid #4aa636', // increasing button border and new color
                   'border-radius': '13px', // circular effect
-                  'box-shadow': '0 0 5px #66a17b' // 3D effect to highlight the button
+                  'box-shadow': '0 0 5px #66a17b',
+                  'background-color':'white' // 3D effect to highlight the button
                 });
+
+                iwCloseBtn.children().remove();
+
+                var elem = $("<i>");
+                elem.attr('class','icon dark ion-close close-icon');
+
+                elem.css({   //.css
+                  position: 'absolute',
+                  left: '3px',       //-6px
+                  top: '0px',      //-674px
+                  width: '26px',     //118px
+                  height: '25px'     //984px
+                });
+
+                iwCloseBtn.append(elem);
 
                 // The API automatically applies 0.7 opacity to the button after the mouseout event.
                 // This function reverses this event to the desired value.
@@ -93,7 +115,11 @@ angular.module('toutcast.controllers.map', [])
 
   var getInfoWindow = function (tout)
   {
-    return '<div class=\"item item-avatar\"><img class=\"tc-img-circle\"></img><h3>'+tout.title+'</h3><p>'+tout.content+'</p></div>';
+    return '<div class=\"item item-icon-left map-item\">'
+            +'<i class=\"icon positive ion-pricetags\"></i>'
+              +'<h3>'+tout.title+'</h3>'
+              +'<p>'+tout.content+'</p>'
+            +'</div>';
   };
 })
 
