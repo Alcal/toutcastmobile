@@ -25,7 +25,7 @@ angular.module('toutcast.controllers.map', [])
           size: new google.maps.Size(39, 41),
           scaledSize: new google.maps.Size(39, 41),
           url: 'img/map-marker.png',
-          anchor: {x:15, y:41}
+          anchor: {x:8, y:41}
         };
 
       $http.get('js/json/touts.json')
@@ -42,7 +42,8 @@ angular.module('toutcast.controllers.map', [])
                   icon: markerIcon     
               }); 
               $scope.touts[x].marker.infowindow = new google.maps.InfoWindow({
-                content: getInfoWindow($scope.touts[x])
+                content: getInfoWindow($scope.touts[x]),
+                disableAutoPan:true
               });
               $scope.touts[x].marker.addListener('click', function() {
                 if($scope.lastInfoWindow)
