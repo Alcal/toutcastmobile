@@ -40,6 +40,12 @@
    border-radius: 2px 2px 0 0;
 }
 
+.map-item
+{
+	border-width: 0px;
+	margin: 0px;
+}
+
 /* Empty. Add your own CSS if you like */
 .no-scroll
 {
@@ -86,10 +92,7 @@
 	vertical-align: bottom;
 }
 
-.map-item
-{
-	border-width: 0px;
-}
+
 
 .sleigh
 {

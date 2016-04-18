@@ -60,6 +60,7 @@ angular.module('toutcast.controllers.map', [])
 
                 // Reference to the DIV which receives the contents of the infowindow using jQuery
                 var iwOuter = angular.element('.gm-style-iw');
+                iwOuter.addClass('ink ink-dark');
                 var iwBackground = iwOuter.prev();
                 var iwInner = iwOuter.children(':nth-child(1)');
                 iwInner.css({"display": "inline-block",
@@ -102,6 +103,7 @@ angular.module('toutcast.controllers.map', [])
                 iwCloseBtn.mouseout(function(){
                   $(this).css({opacity: '1'});
                 });
+                ionicMaterialInk.displayEffect({duration:600}); 
               });
           }
           ionicMaterialInk.displayEffect({duration:600});                  
@@ -116,7 +118,7 @@ angular.module('toutcast.controllers.map', [])
 
   var getInfoWindow = function (tout)
   {
-    return '<div class=\"item item-icon-left map-item\">'
+    return '<div class=\"item item-icon-left map-item ink ink-dark\" href="#">'
             +'<i class=\"icon positive ion-pricetags\"></i>'
               +'<h3>'+tout.title+'</h3>'
               +'<p>'+tout.content+'</p>'
