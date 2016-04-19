@@ -1,22 +1,31 @@
-<ion-view title="Canje de Oferta" hide-nav-bar="true">
-	<ion-content class="content dark-bg" style="overflow: hidden;" has-header="false">
+<ion-view title="Canje de Oferta">
+	<ion-content scroll="false" class="content dark-bg" has-header="false">
 		<div ng-if="loadingTout" class="loading-view positive-bg">
 			<p class="light">Canjeando...</p>
-			<ion-spinner icon="ripple" class="spinner-light" style="margin-right: auto; margin-left: auto;">
-			</ion-spinner>
+			<div class="spinner">
+				<ion-spinner icon="ripple" class="spinner-light" >
+				</ion-spinner>
+			</div>
 		</div>
 		<div class="crescent-container">
 			<div class="circularDiv crescent positive-bg grow" ng-style="crescentStyle" ></div>				
 			<div class="circularDiv crescent positive-bg grow" ng-if="grown" ></div>		
 			<div class="circularDiv crescent light-bg grow" ng-if="loadingTout"></div>
 		</div>
-		<ion-scroll scrollbar-x="false" scrollbar-y="false" delegate-handle="slide-track" style="width: 40%; height: 110%; bottom:0px; margin-right: auto; margin-left: auto;" >
-			<div on-touch="disableScrolling()" on-release="enableScrolling()" style="height:80%"></div>
-			<ion-item href="#" class=" item-balanced item-text-wrap ink ink-light sleigh" on-drag-up="onDragUp()" on-release="onSleighRelease()" direction="y" style="height:15%;overflow: hidden">
-				<h2>Primer Vaso Gratis</h2>
-				<p>Wendlandt</p>
-			</ion-item>
-			<div style="height:110%"></div>
+		<ion-scroll scrollbar-x="false" scrollbar-y="false" delegate-handle="slide-track" class="slide-track" >
+			<div style="height:91%">
+				<div on-touch="disableScrolling()" on-release="enableScrolling()" style="height: 85%"></div>
+				<div href="#" ng-hide="approved" class="balanced-bg item-text-wrap ink ink-light sleigh" on-drag-up="onDragUp()" on-release="onSleighRelease()" direction="y">
+					<h4 class="light">Primer Vaso Gratis</h4>
+					<p>Wendlandt</p>
+				</div>
+				<div href="#" ng-show="approved" class="light-bg item-text-wrap sleigh" style="text-align: center;
+    padding: 2vmin;" direction="y">
+					<i style="font-size: 12vmin;" class="icon positive ion-android-done-all"></i>
+					<h5 class="positive">Aprobada!</h5>
+				</div>
+			</div>
+			<div on-touch="disableScrolling()" on-release="enableScrolling()" style="height:110%"></div>
 		</ion-scroll>
 
 	</ion-content>

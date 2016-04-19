@@ -53,8 +53,9 @@
 }
 
 
-.loading-view{
+div.loading-view{
 	position: absolute;
+	padding: 2vmin;
     top: -9999px;
     bottom: -9999px;
     left: -9999px;
@@ -63,6 +64,11 @@
     z-index: 1000;
     width: 30vmin;
     height: 20vmin;
+}
+
+div.loading-view p
+{
+	text-align: center;
 }
 
 .circularDiv
@@ -87,16 +93,38 @@
 	height: 150%;
 	position: fixed;
 	bottom: -80px;
-	z-index: -1;
+	z-index: 0;
 	overflow: hidden;
 	vertical-align: bottom;
 }
 
+div.spinner
+{
+	margin: auto;
+	text-align: center;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
 
+
+
+.slide-track
+{
+	width: 40%; 
+	height: 110%; 
+	bottom:0px; 
+	margin-right: auto; 
+	margin-left: auto;
+}
 
 .sleigh
 {
 	z-index: 500;
+	height:15%;
+	overflow: hidden;
+	padding: 2vmin;
 }
 
 .shrink.ng-enter {
