@@ -69,7 +69,18 @@ angular.module('toutcast.controllers.slide',['ngAnimate'])
   		{
   			$timeout(function()
   				{
-  					$scope.approved = true;
+  					if(Math.random()<.5)
+  					{
+  						$scope.approved = true;
+  						$scope.failed = false;
+  					}
+  					else
+  					{
+  						$scope.approved = false;
+  						$scope.failed = true;
+  					}
+  					
+  					$scope.done = true;
   					$scope.loadingTout = false;
   					$scope.slideTrack.scrollTop(true);
   				}

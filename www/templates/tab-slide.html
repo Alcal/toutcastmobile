@@ -2,27 +2,31 @@
 	<ion-content scroll="false" class="content dark-bg" has-header="false">
 		<div ng-if="loadingTout" class="loading-view positive-bg">
 			<p class="light">Canjeando...</p>
-			<div class="spinner">
+			<div class="spinner-container">
 				<ion-spinner icon="ripple" class="spinner-light" >
 				</ion-spinner>
 			</div>
 		</div>
 		<div class="crescent-container">
 			<div class="circularDiv crescent positive-bg grow" ng-style="crescentStyle" ></div>				
-			<div class="circularDiv crescent positive-bg grow" ng-if="grown" ></div>		
+			<div class="circularDiv crescent positive-bg grow" ng-if="grown" ></div>
+			<div class="circularDiv crescent energized-bg grow" ng-if="failed" ></div>		
 			<div class="circularDiv crescent light-bg grow" ng-if="loadingTout"></div>
 		</div>
 		<ion-scroll scrollbar-x="false" scrollbar-y="false" delegate-handle="slide-track" class="slide-track" >
 			<div style="height:91%">
 				<div on-touch="disableScrolling()" on-release="enableScrolling()" style="height: 85%"></div>
-				<div href="#" ng-hide="approved" class="balanced-bg item-text-wrap ink ink-light sleigh" on-drag-up="onDragUp()" on-release="onSleighRelease()" direction="y">
-					<h4 class="light">Primer Vaso Gratis</h4>
-					<p>Wendlandt</p>
+				<div href="#" ng-hide="done" class="balanced-bg item-text-wrap ink ink-light sleigh" on-drag-up="onDragUp()" on-release="onSleighRelease()" direction="y">
+					<i class="icon light ion-pricetags"></i>
+					<h5 class="light">Título de Oferta</h5>
 				</div>
-				<div href="#" ng-show="approved" class="light-bg item-text-wrap sleigh" style="text-align: center;
-    padding: 2vmin;" direction="y">
-					<i style="font-size: 12vmin;" class="icon positive ion-android-done-all"></i>
+				<div href="#" on-touch="disableScrolling()" on-release="enableScrolling()" ng-show="approved" class="light-bg item-text-wrap sleigh" direction="y">
+					<i class="icon positive ion-android-done-all"></i>
 					<h5 class="positive">Aprobada!</h5>
+				</div>
+				<div href="#" on-touch="disableScrolling()" on-release="enableScrolling()" ng-show="failed" class="light-bg item-text-wrap sleigh" direction="y">
+					<i class="icon energized ion-android-more-horizontal"></i>
+					<h5 class="energized">Error al canjear</h5>
 				</div>
 			</div>
 			<div on-touch="disableScrolling()" on-release="enableScrolling()" style="height:110%"></div>

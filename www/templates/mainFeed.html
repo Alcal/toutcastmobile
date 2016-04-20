@@ -1,16 +1,20 @@
 <ion-view view-title="ToutCast">  
   <ion-content>
-   <div class="list">
-   	<a href="#" class="item item-avatar animate-fade-slide-in-right">
-   		<img></img>
-   		<h3>Test</h3>
-   		<p>Tasty test</p>
-   	</a>
-   	<a href="#/app/home/feed/1" class="item item-avatar animate-fade-slide-in-right" ng-repeat="t in touts">
-   		<img></img>
+   <ion-list class="list">
+   	<ion-item href="#/app/home/feed/1" class="item item-icon-left animate-fade-slide-in-right" ng-repeat="t in touts">
+   		<img ng-ref="{{t.logo}}" ng-show="t.logo"></img>
+      <i class="icon positive ion-pricetags" ng-hide="t.logo"></i>
    		<h3>{{t.title}}</h3>
    		<p>{{t.content}}</p>
-   	</a>
+   	</ion-item>
+   </ion-list>
+
+   <div style="width:100%;text-align: center;">
+    <ion-spinner class="spinner-balanced" icon="dots"></ion-spinner>
    </div>
+   <div style="width:100%;text-align: center;">
+    <i class="icon energized ion-sad-outline" style="font-size: 13vmin"></i>
+    <p class="energized">Algo ocurrió buscando ofertas, intenta en un momento</p>
+  </div>
   </ion-content>
 </ion-view>

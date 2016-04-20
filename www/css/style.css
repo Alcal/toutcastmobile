@@ -98,7 +98,7 @@ div.loading-view p
 	vertical-align: bottom;
 }
 
-div.spinner
+div.spinner-container
 {
 	margin: auto;
 	text-align: center;
@@ -119,12 +119,18 @@ div.spinner
 	margin-left: auto;
 }
 
-.sleigh
+div.sleigh
 {
 	z-index: 500;
 	height:15%;
 	overflow: hidden;
 	padding: 2vmin;
+	text-align: center;
+}
+
+div.sleigh i
+{
+	font-size: 12vmin;
 }
 
 .shrink.ng-enter {
