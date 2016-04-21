@@ -31,53 +31,28 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
     var details = {
       'email': 'acalo91@gmail.com',
       'password': 'password',
-      'name':'Alex'
+      'username':'alexcastro'
     };
-    Ionic.Auth.signup(details).then(
-      function()
-      {
-        //console.log('TOUTCAST: Signup success');
-        Ionic.Auth.login('basic', {'remember':true}, details).then(
-          function()
-          {
-            //console.log('TOUTCAST: Auth success')
-            var user = Ionic.User.current();
-          }, 
-          function()
-          {
-            //console.log('TOUTCAST: Auth Failure')
-          });
-        
-      },
-     function(e)
-     {
-        //console.log('TOUTCAST: signup failure'); 
-        //console.log(JSON.stringify(e));
-      });
-
-    Ionic.Auth.login('basic', {'remember':true}, details).then(
-      function()
-      {
-        //console.log('TOUTCAST: Auth success')
-        var user = Ionic.User.current();
-      }, 
-      function(e)
-      {
-        console.log('TOUTCAST: Auth Failure');
-        //console.log(JSON.stringify(e));
-      });
-    
 
     var push = new Ionic.Push({
-      "debug": true,
       "onNotification": function(notification) {
-        var payload = notification.payload;
+        console.log('IVE BEEN PUSHED TO THE LIMIT, MAN!');
+        var payload = notification.payload;       
+        alert(payload);
         console.log(notification, payload);
       },
       "onRegister": function(data) {
-        console.log('TOUTCAST: Register successful');
-        console.log('TOUTCAST: '+data.token);
-        push.saveToken(push.token);
+        console.log('PUSH TOUTCAST: Register successful');
+        console.log('PUSH TOUTCAST: '+data.token);
+
+        var user = Ionic.User.current();
+        user.set('name','Alex Castro');
+        user.set('age',24);
+
+        push.saveToken(data);
+
+        user.save();
+        console.log('USER TOUTCAST: '+JSON.stringify(user));
       },
       "pluginConfig": {
         "ios": {
@@ -91,8 +66,43 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
       } 
     });
 
-    var user = Ionic.User.current();
-    user.save();
+    Ionic.Auth.signup(details).then(
+      function()
+      {
+        console.log('TOUTCAST: Signup success');
+        Ionic.Auth.login('basic', {'remember':true}, details).then(
+          function()
+          {
+            console.log('TOUTCAST: Auth success');
+            push.register();
+            console.log(JSON.stringify(user));
+          }, 
+          function(e)
+          {
+            console.log('TOUTCAST: Auth Failure');
+            console.log(JSON.stringify(e));
+          });
+        
+      },
+     function(e)
+     {
+        console.log('TOUTCAST: signup failure'); 
+        console.log(JSON.stringify(e));
+        Ionic.Auth.login('basic', {'remember':true}, details).then(
+        function()
+        {
+          console.log('TOUTCAST: Auth success and will register')
+          var user = Ionic.User.current();
+          
+          push.register();
+        }, 
+        function(e)
+        {
+          console.log('TOUTCAST: Auth Failure');
+          console.log(JSON.stringify(e));
+        });
+        
+      });
   });
 })
 

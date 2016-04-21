@@ -9,6 +9,7 @@
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <allow-navigation href="https://*.ionic.io/*"/>
   <allow-navigation href="http://maps.google.com/*"/>
   <allow-navigation href="https://maps.googleapis.com/maps/*"/>
   <allow-navigation href="https://apps.ionic.io/*"/>
