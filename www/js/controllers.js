@@ -1,4 +1,4 @@
-angular.module('toutcast.controllers', ['toutcast.controllers.map','toutcast.controllers.feed', 'toutcast.controllers.slide', 'toutcast.controllers.profile'])
+angular.module('toutcast.controllers', ['toutcast.controllers.map','toutcast.controllers.feed', 'toutcast.controllers.slide'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, ionicMaterialInk) {
 

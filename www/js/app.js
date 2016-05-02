@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.controllers','toutcast.services', 'ionic-material','LocalStorageModule','lbServices','ngAnimate'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -25,8 +25,6 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
 
     var settings = new Ionic.IO.Settings();
     var app_id = settings.get('app_id');
-    console.log('TOUTCAST: App ID is: '+app_id);
-
 
     var details = {
       'email': 'acalo91@gmail.com',
@@ -35,33 +33,28 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
     };
 
     var push = new Ionic.Push({
-      "onNotification": function(notification) {
-        console.log('IVE BEEN PUSHED TO THE LIMIT, MAN!');
-        var payload = notification.payload;       
-        alert(payload);
-        console.log(notification, payload);
+      "onNotification": function(notification) { 
+        $state.go('app.home.map');
       },
       "onRegister": function(data) {
-        console.log('PUSH TOUTCAST: Register successful');
-        console.log('PUSH TOUTCAST: '+data.token);
 
         var user = Ionic.User.current();
         user.set('name','Alex Castro');
+        user.set('username','alexcastro');
         user.set('age',24);
 
         push.saveToken(data);
 
         user.save();
-        console.log('USER TOUTCAST: '+JSON.stringify(user));
       },
       "pluginConfig": {
         "ios": {
-          "badge": true,
-          "sound": true
+          "badge": true
          },
          "android": {
-            "iconColor": "#387ef5",
-            "sound": true
+            "iconColor": "#4aa636",
+            "vibrate":true,
+            "ledColor":[0,0,0,255]
          }
       } 
     });
@@ -69,31 +62,23 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
     Ionic.Auth.signup(details).then(
       function()
       {
-        console.log('TOUTCAST: Signup success');
         Ionic.Auth.login('basic', {'remember':true}, details).then(
           function()
           {
-            console.log('TOUTCAST: Auth success');
             push.register();
-            console.log(JSON.stringify(user));
           }, 
           function(e)
           {
-            console.log('TOUTCAST: Auth Failure');
             console.log(JSON.stringify(e));
           });
         
       },
      function(e)
      {
-        console.log('TOUTCAST: signup failure'); 
-        console.log(JSON.stringify(e));
         Ionic.Auth.login('basic', {'remember':true}, details).then(
         function()
         {
-          console.log('TOUTCAST: Auth success and will register')
           var user = Ionic.User.current();
-          
           push.register();
         }, 
         function(e)
@@ -143,15 +128,6 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
       }
     }
   })
-  .state('app.home.profile',{
-    url:'/profile',
-    views:{
-      'profileContent':{
-        templateUrl:'templates/profile.html',
-        controller: 'ProfileCtrl'
-      }
-    }
-  })
   .state('app.home.map',{
     url:'/map', 
     views:{
@@ -173,8 +149,8 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
   .state('app.home.feed-detail',{
     url:'/feed/:toutId', 
     views:{
-      'mainFeedContent':{
-        templateUrl:'templates/tab-slide.html',
+      'feedDetailContent':{
+        templateUrl:'templates/slide.html',
         controller: 'SlideCtrl'
       }
     }

@@ -2,12 +2,12 @@
   <ion-content>
    <ion-list class="list">
    	<ion-item href="#/app/home/feed/1" class="item item-avatar animate-fade-slide-in-right" ng-repeat="t in touts">
-   		<img ng-ref="{{t.logo}}" ng-show="t.logo"></img>
+   		<img ng-ref="{{::t.logo}}" ng-show="t.logo"></img>
       <div class="tc-avatar-icon positive-bg circular-div" ng-hide="t.logo">
         <i class="icon light ion-pricetags"></i>
       </div>
-   		<h3>{{t.title}}</h3>
-   		<p>{{t.content}}</p>
+   		<h3>{{::t.title}}</h3>
+   		<p>{{::t.content}}</p>
    	</ion-item>
    </ion-list>
 
