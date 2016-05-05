@@ -1,1 +1,1 @@
-angular.module('toutcast.services',['toutcast.services.tout'])
+angular.module('toutcast.services',['toutcast.services.tout', 'toutcast.services.user'])

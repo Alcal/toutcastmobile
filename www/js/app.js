@@ -119,6 +119,16 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
       }
     })
 
+  .state('app.login', {
+      url: '/login',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/login.html',
+          controller: 'LoginCtrl'
+        }
+      }
+    })
+
   .state('app.home.landing',{
     url:'/landing', 
     views:{
