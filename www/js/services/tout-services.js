@@ -1,35 +1,77 @@
 angular.module('toutcast.services.tout', [])
 
-//Factory Restaurantes Start
-.factory('ToutService', function(localStorageService, Tout) {
-  // Might use a resource here that returns a JSON array
+  //Factory Restaurantes Start
+  .factory('ToutService', function (localStorageService, Tout)
+  {
+    // Might use a resource here that returns a JSON array
 
-  var touts = touts || localStorageService.get('Touts') || Tout.find({}, 
-      //The following function is executed if call was successful
-      function(data)
+    var touts;
+
+    var allPromise = new Promise(function (fulfillPromise, rejectPromise)
+    {
+      if (touts)
       {
-        //After a successful call, we store the data locally to reduce service calls
-        localStorageService.set('Touts', data);
-      }, 
-      //The following function is executed if call failed
-      function(err)
+        fulfillPromise(touts);
+      }
+      else if (localStorageService.get('Touts'))
       {
-        $scope.err = true;
-        //This is where we handle the 'err' object
-        console.log(err);
+        fulfillPromise(localStorageService.get('Touts'))
+      }
+      else
+      {
+        Tout.find({where:{live:true}},
+
+          //The following function is executed if call was successful
+          function (data)
+          {
+            //After a successful call, we store the data locally to reduce service calls
+            localStorageService.set('Touts', data);
+            fulfillPromise(data);
+          },
+          //The following function is executed if call failed
+          function (err)
+          {
+            //This is where we handle the 'err' object
+            console.error(JSON.stringify(err));
+            rejectPromise(err);
+          });
+      }
+    });
+
+    var refreshPromise = new Promise(
+      function (fulfillPromise, rejectPromise)
+      {
+        Tout.find({where:{live:true}},
+
+          //The following function is executed if call was successful
+          function (data)
+          {
+            //After a successful call, we store the data locally to reduce service calls
+            localStorageService.set('Touts', data);
+            fulfillPromise(data);
+          },
+          //The following function is executed if call failed
+          function (err)
+          {
+            //This is where we handle the 'err' object
+            console.error(JSON.stringify(err));
+            rejectPromise(err);
+          });
       });
 
-  return {
-    all: function(cb) {
-      return cb(touts);
-    },
-    get: function(toutId) {
-      for (var i = 0; i < touts.length; i++) {
-        if (touts[i].id === parseInt(toutId)) {
-          return touts[i];
+    return {
+      all: allPromise,
+      get: function (toutId)
+      {
+        for (var i = 0; i < touts.length; i++)
+        {
+          if (touts[i].id === parseInt(toutId))
+          {
+            return touts[i];
+          }
         }
-      }
-      return null;
-    }
-  };
-})//restaurantes end
+        return null;
+      },
+      refresh: refreshPromise
+    };
+  });

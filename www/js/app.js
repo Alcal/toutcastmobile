@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.controllers','toutcast.services', 'ionic-material','LocalStorageModule','lbServices','ngAnimate'])
+angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.controllers','toutcast.services', 'ionic-material','LocalStorageModule','ngAnimate'])
 
 .run(function($ionicPlatform, $state) {
   $ionicPlatform.ready(function() {
@@ -33,7 +33,7 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
     };
 
     var push = new Ionic.Push({
-      "onNotification": function(notification) { 
+      "onNotification": function(notification) {
         $state.go('app.home.map');
       },
       "onRegister": function(data) {
@@ -56,7 +56,7 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
             "vibrate":true,
             "ledColor":[0,0,0,255]
          }
-      } 
+      }
     });
 
     Ionic.Auth.signup(details).then(
@@ -66,12 +66,12 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
           function()
           {
             push.register();
-          }, 
+          },
           function(e)
           {
             console.log(JSON.stringify(e));
           });
-        
+
       },
      function(e)
      {
@@ -80,13 +80,13 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
         {
           var user = Ionic.User.current();
           push.register();
-        }, 
+        },
         function(e)
         {
           console.log('TOUTCAST: Auth Failure');
           console.log(JSON.stringify(e));
         });
-        
+
       });
   });
 })
@@ -130,7 +130,7 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
     })
 
   .state('app.home.landing',{
-    url:'/landing', 
+    url:'/landing',
     views:{
       'landingContent':{
         templateUrl:'templates/landing.html',
@@ -139,7 +139,7 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
     }
   })
   .state('app.home.map',{
-    url:'/map', 
+    url:'/map',
     views:{
       'mainMapContent':{
         templateUrl:'templates/mainMap.html',
@@ -156,15 +156,16 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
       }
     }
   })
-  .state('app.home.feed-detail',{
-    url:'/feed/:toutId', 
-    views:{
-      'feedDetailContent':{
-        templateUrl:'templates/slide.html',
-        controller: 'SlideCtrl'
+    .state('app.home.feed-detail',{
+      url:'/feed/:toutId',
+      views:{
+        'mainFeedContent':{
+          templateUrl:'templates/slide.html',
+          controller: 'SlideCtrl'
+        }
       }
-    }
-  });
+    });
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 });

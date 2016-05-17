@@ -1,7 +1,7 @@
-<ion-view view-title="ToutCast">  
+<ion-view view-title="ToutCast">
   <ion-content>
    <ion-list class="list">
-   	<ion-item href="#/app/home/feed/1" class="item item-avatar animate-fade-slide-in-right" ng-repeat="t in touts">
+   	<ion-item href="#/app/home/feed/{{t.id}}" class="item item-avatar animate-fade-slide-in-right" ng-repeat="t in touts">
    		<img ng-ref="{{::t.logo}}" ng-show="t.logo"></img>
       <div class="tc-avatar-icon positive-bg circular-div" ng-hide="t.logo">
         <i class="icon light ion-pricetags"></i>
@@ -14,7 +14,7 @@
    <div style="width:100%;text-align: center;">
     <ion-spinner class="spinner-balanced" icon="dots"></ion-spinner>
    </div>
-   <div style="width:100%;text-align: center;">
+   <div style="width:100%;text-align: center;" ng-show = "errorState">
     <i class="icon energized ion-sad-outline" style="font-size: 13vmin"></i>
     <p class="energized">Algo ocurrió buscando ofertas, intenta en un momento</p>
   </div>

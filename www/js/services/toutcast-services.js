@@ -1,3 +1,14 @@
+// CommonJS package manager support
+if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.exports === exports) {
+  // Export the *name* of this Angular module
+  // Sample usage:
+  //
+  //   import lbServices from './lb-services';
+  //   angular.module('app', [lbServices]);
+  //
+  module.exports = "toutCastServices";
+}
+
 (function(window, angular, undefined) {'use strict';
 
 var urlBase = "https://toutcastservices.herokuapp.com/api";
@@ -12,20 +23,20 @@ var urlBaseHost = getHost(urlBase) || location.host;
 
 /**
  * @ngdoc overview
- * @name lbServices
+ * @name toutCastServices
  * @module
  * @description
  *
- * The `lbServices` module provides services for interacting with
+ * The `toutCastServices` module provides services for interacting with
  * the models exposed by the LoopBack server via the REST API.
  *
  */
-var module = angular.module("lbServices", ['ngResource']);
+var module = angular.module("toutCastServices", ['ngResource']);
 
 /**
  * @ngdoc object
- * @name lbServices.Tout
- * @header lbServices.Tout
+ * @name toutCastServices.Tout
+ * @header toutCastServices.Tout
  * @object
  *
  * @description
@@ -55,8 +66,260 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#create
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#prototype$__findById__redemptions
+         * @methodOf toutCastServices.Tout
+         *
+         * @description
+         *
+         * Find a related item by id for redemptions.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for redemptions
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Tout` object.)
+         * </em>
+         */
+        "prototype$__findById__redemptions": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Touts/:id/redemptions/:fk",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.Tout#prototype$__destroyById__redemptions
+         * @methodOf toutCastServices.Tout
+         *
+         * @description
+         *
+         * Delete a related item by id for redemptions.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for redemptions
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "prototype$__destroyById__redemptions": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Touts/:id/redemptions/:fk",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.Tout#prototype$__updateById__redemptions
+         * @methodOf toutCastServices.Tout
+         *
+         * @description
+         *
+         * Update a related item by id for redemptions.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for redemptions
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Tout` object.)
+         * </em>
+         */
+        "prototype$__updateById__redemptions": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Touts/:id/redemptions/:fk",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.Tout#prototype$__get__redemptions
+         * @methodOf toutCastServices.Tout
+         *
+         * @description
+         *
+         * Queries redemptions of Tout.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `filter` – `{object=}` -
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Tout` object.)
+         * </em>
+         */
+        "prototype$__get__redemptions": {
+          isArray: true,
+          url: urlBase + "/Touts/:id/redemptions",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.Tout#prototype$__create__redemptions
+         * @methodOf toutCastServices.Tout
+         *
+         * @description
+         *
+         * Creates a new instance in redemptions of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Tout` object.)
+         * </em>
+         */
+        "prototype$__create__redemptions": {
+          url: urlBase + "/Touts/:id/redemptions",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.Tout#prototype$__delete__redemptions
+         * @methodOf toutCastServices.Tout
+         *
+         * @description
+         *
+         * Deletes all redemptions of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "prototype$__delete__redemptions": {
+          url: urlBase + "/Touts/:id/redemptions",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.Tout#prototype$__count__redemptions
+         * @methodOf toutCastServices.Tout
+         *
+         * @description
+         *
+         * Counts redemptions of Tout.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` -
+         */
+        "prototype$__count__redemptions": {
+          url: urlBase + "/Touts/:id/redemptions/count",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.Tout#create
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -93,8 +356,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#createMany
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#createMany
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -132,8 +395,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#upsert
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#upsert
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -170,8 +433,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#exists
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#exists
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -193,7 +456,7 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `exists` – `{boolean=}` - 
+         *  - `exists` – `{boolean=}` -
          */
         "exists": {
           url: urlBase + "/Touts/:id/exists",
@@ -202,8 +465,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#findById
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#findById
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -237,8 +500,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#find
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#find
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -271,8 +534,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#findOne
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#findOne
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -304,8 +567,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#updateAll
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#updateAll
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -329,7 +592,7 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         "updateAll": {
           url: urlBase + "/Touts/update",
@@ -338,8 +601,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#deleteById
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#deleteById
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -359,7 +622,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Tout` object.)
+         * </em>
          */
         "deleteById": {
           url: urlBase + "/Touts/:id",
@@ -368,8 +634,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#count
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#count
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -391,7 +657,7 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `count` – `{number=}` - 
+         *  - `count` – `{number=}` -
          */
         "count": {
           url: urlBase + "/Touts/count",
@@ -400,8 +666,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#prototype$updateAttributes
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#prototype$updateAttributes
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -437,22 +703,21 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#nearby
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#createChangeStream
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
-         * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
+         * Create a change stream.
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `loc` – `{GeoPoint}` - 
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
          *
-         *  - `rad` – `{Number=}` - 
+         * @param {Object} postData Request data.
          *
-         *  - `cap` – `{Number=}` - 
+         *  - `options` – `{object=}` -
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -466,11 +731,127 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `touts` – `{undefined=}` - 
+         *  - `changes` – `{ReadableStream=}` -
+         */
+        "createChangeStream": {
+          url: urlBase + "/Touts/change-stream",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.Tout#nearby
+         * @methodOf toutCastServices.Tout
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `loc` – `{GeoPoint}` -
+         *
+         *  - `rad` – `{Number=}` -
+         *
+         *  - `cap` – `{Number=}` -
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `touts` – `{undefined=}` -
          */
         "nearby": {
           url: urlBase + "/Touts/nearby",
           method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.Tout#publish
+         * @methodOf toutCastServices.Tout
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `toutId` – `{String}` -
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `` – `{undefined=}` -
+         */
+        "publish": {
+          url: urlBase + "/Touts/publish",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.Tout#redeem
+         * @methodOf toutCastServices.Tout
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `toutId` – `{String}` -
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `tout` – `{undefined=}` -
+         */
+        "redeem": {
+          url: urlBase + "/Touts/redeem",
+          method: "POST"
         },
 
         // INTERNAL. Use Locale.touts.findById() instead.
@@ -538,8 +919,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#updateOrCreate
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#updateOrCreate
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -573,8 +954,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#update
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#update
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -598,14 +979,14 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         R["update"] = R["updateAll"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#destroyById
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#destroyById
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -625,14 +1006,17 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Tout` object.)
+         * </em>
          */
         R["destroyById"] = R["deleteById"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#removeById
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#removeById
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -652,15 +1036,18 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Tout` object.)
+         * </em>
          */
         R["removeById"] = R["deleteById"];
 
 
     /**
     * @ngdoc property
-    * @name lbServices.Tout#modelName
-    * @propertyOf lbServices.Tout
+    * @name toutCastServices.Tout#modelName
+    * @propertyOf toutCastServices.Tout
     * @description
     * The name of the model represented by this $resource,
     * i.e. `Tout`.
@@ -670,8 +1057,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Tout#locale
-         * @methodOf lbServices.Tout
+         * @name toutCastServices.Tout#locale
+         * @methodOf toutCastServices.Tout
          *
          * @description
          *
@@ -681,7 +1068,7 @@ module.factory(
          *
          *  - `id` – `{*}` - PersistedModel id
          *
-         *  - `refresh` – `{boolean=}` - 
+         *  - `refresh` – `{boolean=}` -
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -709,8 +1096,8 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.BusinessCategory
- * @header lbServices.BusinessCategory
+ * @name toutCastServices.BusinessCategory
+ * @header toutCastServices.BusinessCategory
  * @object
  *
  * @description
@@ -734,8 +1121,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#create
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#create
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -772,8 +1159,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#createMany
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#createMany
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -811,8 +1198,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#upsert
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#upsert
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -849,8 +1236,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#exists
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#exists
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -872,7 +1259,7 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `exists` – `{boolean=}` - 
+         *  - `exists` – `{boolean=}` -
          */
         "exists": {
           url: urlBase + "/BusinessCategories/:id/exists",
@@ -881,8 +1268,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#findById
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#findById
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -916,8 +1303,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#find
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#find
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -950,8 +1337,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#findOne
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#findOne
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -983,8 +1370,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#updateAll
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#updateAll
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -1008,7 +1395,7 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         "updateAll": {
           url: urlBase + "/BusinessCategories/update",
@@ -1017,8 +1404,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#deleteById
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#deleteById
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -1038,7 +1425,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `BusinessCategory` object.)
+         * </em>
          */
         "deleteById": {
           url: urlBase + "/BusinessCategories/:id",
@@ -1047,8 +1437,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#count
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#count
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -1070,7 +1460,7 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `count` – `{number=}` - 
+         *  - `count` – `{number=}` -
          */
         "count": {
           url: urlBase + "/BusinessCategories/count",
@@ -1079,8 +1469,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#prototype$updateAttributes
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#prototype$updateAttributes
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -1088,8 +1478,7 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
+         *  - `id` – `{*}` - PersistedModel id
          *
          * @param {Object} postData Request data.
          *
@@ -1115,34 +1504,71 @@ module.factory(
           method: "PUT"
         },
 
-        // INTERNAL. Use Commerce.businessCategories() instead.
-        "::get::Commerce::businessCategories": {
-          url: urlBase + "/Commerces/:id/businessCategories",
+        /**
+         * @ngdoc method
+         * @name toutCastServices.BusinessCategory#createChangeStream
+         * @methodOf toutCastServices.BusinessCategory
+         *
+         * @description
+         *
+         * Create a change stream.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `options` – `{object=}` -
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `changes` – `{ReadableStream=}` -
+         */
+        "createChangeStream": {
+          url: urlBase + "/BusinessCategories/change-stream",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Business.businessCategories() instead.
+        "::get::Business::businessCategories": {
+          url: urlBase + "/Businesses/:id/businessCategories",
           method: "GET"
         },
 
-        // INTERNAL. Use Commerce.businessCategories.create() instead.
-        "::create::Commerce::businessCategories": {
-          url: urlBase + "/Commerces/:id/businessCategories",
+        // INTERNAL. Use Business.businessCategories.create() instead.
+        "::create::Business::businessCategories": {
+          url: urlBase + "/Businesses/:id/businessCategories",
           method: "POST"
         },
 
-        // INTERNAL. Use Commerce.businessCategories.createMany() instead.
-        "::createMany::Commerce::businessCategories": {
+        // INTERNAL. Use Business.businessCategories.createMany() instead.
+        "::createMany::Business::businessCategories": {
           isArray: true,
-          url: urlBase + "/Commerces/:id/businessCategories",
+          url: urlBase + "/Businesses/:id/businessCategories",
           method: "POST"
         },
 
-        // INTERNAL. Use Commerce.businessCategories.update() instead.
-        "::update::Commerce::businessCategories": {
-          url: urlBase + "/Commerces/:id/businessCategories",
+        // INTERNAL. Use Business.businessCategories.update() instead.
+        "::update::Business::businessCategories": {
+          url: urlBase + "/Businesses/:id/businessCategories",
           method: "PUT"
         },
 
-        // INTERNAL. Use Commerce.businessCategories.destroy() instead.
-        "::destroy::Commerce::businessCategories": {
-          url: urlBase + "/Commerces/:id/businessCategories",
+        // INTERNAL. Use Business.businessCategories.destroy() instead.
+        "::destroy::Business::businessCategories": {
+          url: urlBase + "/Businesses/:id/businessCategories",
           method: "DELETE"
         },
       }
@@ -1152,8 +1578,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#updateOrCreate
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#updateOrCreate
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -1187,8 +1613,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#update
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#update
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -1212,14 +1638,14 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         R["update"] = R["updateAll"];
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#destroyById
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#destroyById
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -1239,14 +1665,17 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `BusinessCategory` object.)
+         * </em>
          */
         R["destroyById"] = R["deleteById"];
 
         /**
          * @ngdoc method
-         * @name lbServices.BusinessCategory#removeById
-         * @methodOf lbServices.BusinessCategory
+         * @name toutCastServices.BusinessCategory#removeById
+         * @methodOf toutCastServices.BusinessCategory
          *
          * @description
          *
@@ -1266,15 +1695,18 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `BusinessCategory` object.)
+         * </em>
          */
         R["removeById"] = R["deleteById"];
 
 
     /**
     * @ngdoc property
-    * @name lbServices.BusinessCategory#modelName
-    * @propertyOf lbServices.BusinessCategory
+    * @name toutCastServices.BusinessCategory#modelName
+    * @propertyOf toutCastServices.BusinessCategory
     * @description
     * The name of the model represented by this $resource,
     * i.e. `BusinessCategory`.
@@ -1287,8 +1719,8 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.ToutUser
- * @header lbServices.ToutUser
+ * @name toutCastServices.ToutUser
+ * @header toutCastServices.ToutUser
  * @object
  *
  * @description
@@ -1306,14 +1738,14 @@ module.factory(
   "ToutUser",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/ToutsUsers/:id",
+      urlBase + "/ToutUsers/:id",
       { 'id': '@id' },
       {
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#prototype$__findById__accessTokens
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#prototype$__findById__accessTokens
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1344,14 +1776,14 @@ module.factory(
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/ToutsUsers/:id/accessTokens/:fk",
+          url: urlBase + "/ToutUsers/:id/accessTokens/:fk",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#prototype$__destroyById__accessTokens
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#prototype$__destroyById__accessTokens
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1379,14 +1811,14 @@ module.factory(
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/ToutsUsers/:id/accessTokens/:fk",
+          url: urlBase + "/ToutUsers/:id/accessTokens/:fk",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#prototype$__updateById__accessTokens
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#prototype$__updateById__accessTokens
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1421,38 +1853,268 @@ module.factory(
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/ToutsUsers/:id/accessTokens/:fk",
+          url: urlBase + "/ToutUsers/:id/accessTokens/:fk",
           method: "PUT"
         },
 
         // INTERNAL. Use ToutUser.commerces() instead.
         "prototype$__get__commerces": {
-          url: urlBase + "/ToutsUsers/:id/commerces",
+          url: urlBase + "/ToutUsers/:id/commerces",
           method: "GET"
         },
 
         // INTERNAL. Use ToutUser.commerces.create() instead.
         "prototype$__create__commerces": {
-          url: urlBase + "/ToutsUsers/:id/commerces",
+          url: urlBase + "/ToutUsers/:id/commerces",
           method: "POST"
         },
 
         // INTERNAL. Use ToutUser.commerces.update() instead.
         "prototype$__update__commerces": {
-          url: urlBase + "/ToutsUsers/:id/commerces",
+          url: urlBase + "/ToutUsers/:id/commerces",
           method: "PUT"
         },
 
         // INTERNAL. Use ToutUser.commerces.destroy() instead.
         "prototype$__destroy__commerces": {
-          url: urlBase + "/ToutsUsers/:id/commerces",
+          url: urlBase + "/ToutUsers/:id/commerces",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#prototype$__get__accessTokens
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#prototype$__findById__identities
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Find a related item by id for identities.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         *  - `fk` – `{*}` - Foreign key for identities
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ToutUser` object.)
+         * </em>
+         */
+        "prototype$__findById__identities": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/ToutUsers/:id/identities/:fk",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#prototype$__destroyById__identities
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Delete a related item by id for identities.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         *  - `fk` – `{*}` - Foreign key for identities
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "prototype$__destroyById__identities": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/ToutUsers/:id/identities/:fk",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#prototype$__updateById__identities
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Update a related item by id for identities.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         *  - `fk` – `{*}` - Foreign key for identities
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ToutUser` object.)
+         * </em>
+         */
+        "prototype$__updateById__identities": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/ToutUsers/:id/identities/:fk",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#prototype$__findById__credentials
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Find a related item by id for credentials.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         *  - `fk` – `{*}` - Foreign key for credentials
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ToutUser` object.)
+         * </em>
+         */
+        "prototype$__findById__credentials": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/ToutUsers/:id/credentials/:fk",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#prototype$__destroyById__credentials
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Delete a related item by id for credentials.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         *  - `fk` – `{*}` - Foreign key for credentials
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "prototype$__destroyById__credentials": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/ToutUsers/:id/credentials/:fk",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#prototype$__updateById__credentials
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Update a related item by id for credentials.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         *  - `fk` – `{*}` - Foreign key for credentials
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ToutUser` object.)
+         * </em>
+         */
+        "prototype$__updateById__credentials": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/ToutUsers/:id/credentials/:fk",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#prototype$__get__accessTokens
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1462,7 +2124,7 @@ module.factory(
          *
          *  - `id` – `{*}` - User id
          *
-         *  - `filter` – `{object=}` - 
+         *  - `filter` – `{object=}` -
          *
          * @param {function(Array.<Object>,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -1481,14 +2143,14 @@ module.factory(
          */
         "prototype$__get__accessTokens": {
           isArray: true,
-          url: urlBase + "/ToutsUsers/:id/accessTokens",
+          url: urlBase + "/ToutUsers/:id/accessTokens",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#prototype$__create__accessTokens
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#prototype$__create__accessTokens
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1518,14 +2180,14 @@ module.factory(
          * </em>
          */
         "prototype$__create__accessTokens": {
-          url: urlBase + "/ToutsUsers/:id/accessTokens",
+          url: urlBase + "/ToutUsers/:id/accessTokens",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#prototype$__delete__accessTokens
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#prototype$__delete__accessTokens
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1548,14 +2210,14 @@ module.factory(
          * This method returns no data.
          */
         "prototype$__delete__accessTokens": {
-          url: urlBase + "/ToutsUsers/:id/accessTokens",
+          url: urlBase + "/ToutUsers/:id/accessTokens",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#prototype$__count__accessTokens
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#prototype$__count__accessTokens
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1579,17 +2241,291 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `count` – `{number=}` - 
+         *  - `count` – `{number=}` -
          */
         "prototype$__count__accessTokens": {
-          url: urlBase + "/ToutsUsers/:id/accessTokens/count",
+          url: urlBase + "/ToutUsers/:id/accessTokens/count",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#create
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#prototype$__get__identities
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Queries identities of ToutUser.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         *  - `filter` – `{object=}` -
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ToutUser` object.)
+         * </em>
+         */
+        "prototype$__get__identities": {
+          isArray: true,
+          url: urlBase + "/ToutUsers/:id/identities",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#prototype$__create__identities
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Creates a new instance in identities of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ToutUser` object.)
+         * </em>
+         */
+        "prototype$__create__identities": {
+          url: urlBase + "/ToutUsers/:id/identities",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#prototype$__delete__identities
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Deletes all identities of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "prototype$__delete__identities": {
+          url: urlBase + "/ToutUsers/:id/identities",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#prototype$__count__identities
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Counts identities of ToutUser.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` -
+         */
+        "prototype$__count__identities": {
+          url: urlBase + "/ToutUsers/:id/identities/count",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#prototype$__get__credentials
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Queries credentials of ToutUser.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         *  - `filter` – `{object=}` -
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ToutUser` object.)
+         * </em>
+         */
+        "prototype$__get__credentials": {
+          isArray: true,
+          url: urlBase + "/ToutUsers/:id/credentials",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#prototype$__create__credentials
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Creates a new instance in credentials of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ToutUser` object.)
+         * </em>
+         */
+        "prototype$__create__credentials": {
+          url: urlBase + "/ToutUsers/:id/credentials",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#prototype$__delete__credentials
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Deletes all credentials of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "prototype$__delete__credentials": {
+          url: urlBase + "/ToutUsers/:id/credentials",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#prototype$__count__credentials
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Counts credentials of ToutUser.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` -
+         */
+        "prototype$__count__credentials": {
+          url: urlBase + "/ToutUsers/:id/credentials/count",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#create
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1620,14 +2556,14 @@ module.factory(
          * </em>
          */
         "create": {
-          url: urlBase + "/ToutsUsers",
+          url: urlBase + "/ToutUsers",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#createMany
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#createMany
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1659,14 +2595,14 @@ module.factory(
          */
         "createMany": {
           isArray: true,
-          url: urlBase + "/ToutsUsers",
+          url: urlBase + "/ToutUsers",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#upsert
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#upsert
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1697,14 +2633,14 @@ module.factory(
          * </em>
          */
         "upsert": {
-          url: urlBase + "/ToutsUsers",
+          url: urlBase + "/ToutUsers",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#exists
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#exists
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1726,17 +2662,17 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `exists` – `{boolean=}` - 
+         *  - `exists` – `{boolean=}` -
          */
         "exists": {
-          url: urlBase + "/ToutsUsers/:id/exists",
+          url: urlBase + "/ToutUsers/:id/exists",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#findById
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#findById
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1764,14 +2700,14 @@ module.factory(
          * </em>
          */
         "findById": {
-          url: urlBase + "/ToutsUsers/:id",
+          url: urlBase + "/ToutUsers/:id",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#find
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#find
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1798,14 +2734,14 @@ module.factory(
          */
         "find": {
           isArray: true,
-          url: urlBase + "/ToutsUsers",
+          url: urlBase + "/ToutUsers",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#findOne
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#findOne
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1831,14 +2767,14 @@ module.factory(
          * </em>
          */
         "findOne": {
-          url: urlBase + "/ToutsUsers/findOne",
+          url: urlBase + "/ToutUsers/findOne",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#updateAll
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#updateAll
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1862,17 +2798,17 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         "updateAll": {
-          url: urlBase + "/ToutsUsers/update",
+          url: urlBase + "/ToutUsers/update",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#deleteById
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#deleteById
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1892,17 +2828,20 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ToutUser` object.)
+         * </em>
          */
         "deleteById": {
-          url: urlBase + "/ToutsUsers/:id",
+          url: urlBase + "/ToutUsers/:id",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#count
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#count
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1924,17 +2863,17 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `count` – `{number=}` - 
+         *  - `count` – `{number=}` -
          */
         "count": {
-          url: urlBase + "/ToutsUsers/count",
+          url: urlBase + "/ToutUsers/count",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#prototype$updateAttributes
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#prototype$updateAttributes
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -1964,14 +2903,51 @@ module.factory(
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/ToutsUsers/:id",
+          url: urlBase + "/ToutUsers/:id",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#login
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#createChangeStream
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Create a change stream.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `options` – `{object=}` -
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `changes` – `{ReadableStream=}` -
+         */
+        "createChangeStream": {
+          url: urlBase + "/ToutUsers/change-stream",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#login
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -2002,9 +2978,9 @@ module.factory(
          *
          * The response body contains properties of the AccessToken created on login.
          * Depending on the value of `include` parameter, the body may contain additional properties:
-         * 
+         *
          *   - `user` - `{User}` - Data of the currently logged in user. (`include=user`)
-         * 
+         *
          *
          */
         "login": {
@@ -2020,18 +2996,18 @@ module.factory(
               return response.resource;
             }
           },
-          url: urlBase + "/ToutsUsers/login",
+          url: urlBase + "/ToutUsers/login",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#logout
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#logout
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
-         * Logout a user with access token
+         * Logout a user with access token.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2062,26 +3038,26 @@ module.factory(
               return response.resource;
             }
           },
-          url: urlBase + "/ToutsUsers/logout",
+          url: urlBase + "/ToutUsers/logout",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#confirm
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#confirm
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
-         * Confirm a user registration with email verification token
+         * Confirm a user registration with email verification token.
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `uid` – `{string}` - 
+         *  - `uid` – `{string}` -
          *
-         *  - `token` – `{string}` - 
+         *  - `token` – `{string}` -
          *
-         *  - `redirect` – `{string=}` - 
+         *  - `redirect` – `{string=}` -
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2096,18 +3072,18 @@ module.factory(
          * This method returns no data.
          */
         "confirm": {
-          url: urlBase + "/ToutsUsers/confirm",
+          url: urlBase + "/ToutUsers/confirm",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#resetPassword
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#resetPassword
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
-         * Reset password for a user with email
+         * Reset password for a user with email.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2131,18 +3107,18 @@ module.factory(
          * This method returns no data.
          */
         "resetPassword": {
-          url: urlBase + "/ToutsUsers/reset",
+          url: urlBase + "/ToutUsers/reset",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#getCurrent
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#getCurrent
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
-         * Get data of the currently logged user. Fail with HTTP result 401
+         * Get data of the currently logged user. Fail with Http result 401
          * when there is no user logged in.
          *
          * @param {function(Object,Object)=} successCb
@@ -2156,7 +3132,7 @@ module.factory(
          *   from the server.
          */
         "getCurrent": {
-           url: urlBase + "/ToutsUsers" + "/:id",
+           url: urlBase + "/ToutUsers" + "/:id",
            method: "GET",
            params: {
              id: function() {
@@ -2180,8 +3156,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#updateOrCreate
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#updateOrCreate
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -2215,8 +3191,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#update
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#update
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -2240,14 +3216,14 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         R["update"] = R["updateAll"];
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser#destroyById
-         * @methodOf lbServices.ToutUser
+         * @name toutCastServices.ToutUser#destroyById
+         * @methodOf toutCastServices.ToutUser
          *
          * @description
          *
@@ -2256,129 +3232,6 @@ module.factory(
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R["destroyById"] = R["deleteById"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.ToutUser#removeById
-         * @methodOf lbServices.ToutUser
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R["removeById"] = R["deleteById"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.ToutUser#getCachedCurrent
-         * @methodOf lbServices.ToutUser
-         *
-         * @description
-         *
-         * Get data of the currently logged user that was returned by the last
-         * call to {@link lbServices.ToutUser#login} or
-         * {@link lbServices.ToutUser#getCurrent}. Return null when there
-         * is no user logged in or the data of the current user were not fetched
-         * yet.
-         *
-         * @returns {Object} A ToutUser instance.
-         */
-        R.getCachedCurrent = function() {
-          var data = LoopBackAuth.currentUserData;
-          return data ? new R(data) : null;
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.ToutUser#isAuthenticated
-         * @methodOf lbServices.ToutUser
-         *
-         * @returns {boolean} True if the current user is authenticated (logged in).
-         */
-        R.isAuthenticated = function() {
-          return this.getCurrentId() != null;
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.ToutUser#getCurrentId
-         * @methodOf lbServices.ToutUser
-         *
-         * @returns {Object} Id of the currently logged-in user or null.
-         */
-        R.getCurrentId = function() {
-          return LoopBackAuth.currentUserId;
-        };
-
-    /**
-    * @ngdoc property
-    * @name lbServices.ToutUser#modelName
-    * @propertyOf lbServices.ToutUser
-    * @description
-    * The name of the model represented by this $resource,
-    * i.e. `ToutUser`.
-    */
-    R.modelName = "ToutUser";
-
-    /**
-     * @ngdoc object
-     * @name lbServices.ToutUser.commerces
-     * @header lbServices.ToutUser.commerces
-     * @object
-     * @description
-     *
-     * The object `ToutUser.commerces` groups methods
-     * manipulating `Commerce` instances related to `ToutUser`.
-     *
-     * Call {@link lbServices.ToutUser#commerces ToutUser.commerces()}
-     * to query all related instances.
-     */
-
-
-        /**
-         * @ngdoc method
-         * @name lbServices.ToutUser#commerces
-         * @methodOf lbServices.ToutUser
-         *
-         * @description
-         *
-         * Fetches hasOne relation commerces.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - User id
-         *
-         *  - `refresh` – `{boolean=}` - 
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2392,19 +3245,148 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Commerce` object.)
+         * This usually means the response is a `ToutUser` object.)
+         * </em>
+         */
+        R["destroyById"] = R["deleteById"];
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#removeById
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ToutUser` object.)
+         * </em>
+         */
+        R["removeById"] = R["deleteById"];
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#getCachedCurrent
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Get data of the currently logged user that was returned by the last
+         * call to {@link toutCastServices.ToutUser#login} or
+         * {@link toutCastServices.ToutUser#getCurrent}. Return null when there
+         * is no user logged in or the data of the current user were not fetched
+         * yet.
+         *
+         * @returns {Object} A ToutUser instance.
+         */
+        R.getCachedCurrent = function() {
+          var data = LoopBackAuth.currentUserData;
+          return data ? new R(data) : null;
+        };
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#isAuthenticated
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @returns {boolean} True if the current user is authenticated (logged in).
+         */
+        R.isAuthenticated = function() {
+          return this.getCurrentId() != null;
+        };
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#getCurrentId
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @returns {Object} Id of the currently logged-in user or null.
+         */
+        R.getCurrentId = function() {
+          return LoopBackAuth.currentUserId;
+        };
+
+    /**
+    * @ngdoc property
+    * @name toutCastServices.ToutUser#modelName
+    * @propertyOf toutCastServices.ToutUser
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `ToutUser`.
+    */
+    R.modelName = "ToutUser";
+
+    /**
+     * @ngdoc object
+     * @name toutCastServices.ToutUser.commerces
+     * @header toutCastServices.ToutUser.commerces
+     * @object
+     * @description
+     *
+     * The object `ToutUser.commerces` groups methods
+     * manipulating `Business` instances related to `ToutUser`.
+     *
+     * Call {@link toutCastServices.ToutUser#commerces ToutUser.commerces()}
+     * to query all related instances.
+     */
+
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.ToutUser#commerces
+         * @methodOf toutCastServices.ToutUser
+         *
+         * @description
+         *
+         * Fetches hasOne relation commerces.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         *  - `refresh` – `{boolean=}` -
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Business` object.)
          * </em>
          */
         R.commerces = function() {
-          var TargetResource = $injector.get("Commerce");
+          var TargetResource = $injector.get("Business");
           var action = TargetResource["::get::ToutUser::commerces"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser.commerces#create
-         * @methodOf lbServices.ToutUser.commerces
+         * @name toutCastServices.ToutUser.commerces#create
+         * @methodOf toutCastServices.ToutUser.commerces
          *
          * @description
          *
@@ -2430,19 +3412,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Commerce` object.)
+         * This usually means the response is a `Business` object.)
          * </em>
          */
         R.commerces.create = function() {
-          var TargetResource = $injector.get("Commerce");
+          var TargetResource = $injector.get("Business");
           var action = TargetResource["::create::ToutUser::commerces"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser.commerces#createMany
-         * @methodOf lbServices.ToutUser.commerces
+         * @name toutCastServices.ToutUser.commerces#createMany
+         * @methodOf toutCastServices.ToutUser.commerces
          *
          * @description
          *
@@ -2468,19 +3450,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Commerce` object.)
+         * This usually means the response is a `Business` object.)
          * </em>
          */
         R.commerces.createMany = function() {
-          var TargetResource = $injector.get("Commerce");
+          var TargetResource = $injector.get("Business");
           var action = TargetResource["::createMany::ToutUser::commerces"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser.commerces#destroy
-         * @methodOf lbServices.ToutUser.commerces
+         * @name toutCastServices.ToutUser.commerces#destroy
+         * @methodOf toutCastServices.ToutUser.commerces
          *
          * @description
          *
@@ -2503,15 +3485,15 @@ module.factory(
          * This method returns no data.
          */
         R.commerces.destroy = function() {
-          var TargetResource = $injector.get("Commerce");
+          var TargetResource = $injector.get("Business");
           var action = TargetResource["::destroy::ToutUser::commerces"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.ToutUser.commerces#update
-         * @methodOf lbServices.ToutUser.commerces
+         * @name toutCastServices.ToutUser.commerces#update
+         * @methodOf toutCastServices.ToutUser.commerces
          *
          * @description
          *
@@ -2537,11 +3519,11 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Commerce` object.)
+         * This usually means the response is a `Business` object.)
          * </em>
          */
         R.commerces.update = function() {
-          var TargetResource = $injector.get("Commerce");
+          var TargetResource = $injector.get("Business");
           var action = TargetResource["::update::ToutUser::commerces"];
           return action.apply(R, arguments);
         };
@@ -2551,8 +3533,8 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.Locale
- * @header lbServices.Locale
+ * @name toutCastServices.Locale
+ * @header toutCastServices.Locale
  * @object
  *
  * @description
@@ -2634,8 +3616,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#create
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#create
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -2672,8 +3654,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#createMany
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#createMany
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -2711,8 +3693,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#upsert
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#upsert
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -2749,8 +3731,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#exists
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#exists
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -2772,7 +3754,7 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `exists` – `{boolean=}` - 
+         *  - `exists` – `{boolean=}` -
          */
         "exists": {
           url: urlBase + "/Locales/:id/exists",
@@ -2781,8 +3763,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#findById
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#findById
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -2816,8 +3798,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#find
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#find
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -2850,8 +3832,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#findOne
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#findOne
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -2883,8 +3865,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#updateAll
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#updateAll
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -2908,7 +3890,7 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         "updateAll": {
           url: urlBase + "/Locales/update",
@@ -2917,8 +3899,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#deleteById
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#deleteById
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -2938,7 +3920,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Locale` object.)
+         * </em>
          */
         "deleteById": {
           url: urlBase + "/Locales/:id",
@@ -2947,8 +3932,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#count
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#count
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -2970,7 +3955,7 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `count` – `{number=}` - 
+         *  - `count` – `{number=}` -
          */
         "count": {
           url: urlBase + "/Locales/count",
@@ -2979,8 +3964,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#prototype$updateAttributes
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#prototype$updateAttributes
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -2988,8 +3973,7 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
+         *  - `id` – `{*}` - PersistedModel id
          *
          * @param {Object} postData Request data.
          *
@@ -3015,68 +3999,105 @@ module.factory(
           method: "PUT"
         },
 
+        /**
+         * @ngdoc method
+         * @name toutCastServices.Locale#createChangeStream
+         * @methodOf toutCastServices.Locale
+         *
+         * @description
+         *
+         * Create a change stream.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `options` – `{object=}` -
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `changes` – `{ReadableStream=}` -
+         */
+        "createChangeStream": {
+          url: urlBase + "/Locales/change-stream",
+          method: "POST"
+        },
+
         // INTERNAL. Use Tout.locale() instead.
         "::get::Tout::locale": {
           url: urlBase + "/Touts/:id/locale",
           method: "GET"
         },
 
-        // INTERNAL. Use Commerce.locales.findById() instead.
-        "::findById::Commerce::locales": {
+        // INTERNAL. Use Business.locales.findById() instead.
+        "::findById::Business::locales": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/Commerces/:id/locales/:fk",
+          url: urlBase + "/Businesses/:id/locales/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use Commerce.locales.destroyById() instead.
-        "::destroyById::Commerce::locales": {
+        // INTERNAL. Use Business.locales.destroyById() instead.
+        "::destroyById::Business::locales": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/Commerces/:id/locales/:fk",
+          url: urlBase + "/Businesses/:id/locales/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Commerce.locales.updateById() instead.
-        "::updateById::Commerce::locales": {
+        // INTERNAL. Use Business.locales.updateById() instead.
+        "::updateById::Business::locales": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/Commerces/:id/locales/:fk",
+          url: urlBase + "/Businesses/:id/locales/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Commerce.locales() instead.
-        "::get::Commerce::locales": {
+        // INTERNAL. Use Business.locales() instead.
+        "::get::Business::locales": {
           isArray: true,
-          url: urlBase + "/Commerces/:id/locales",
+          url: urlBase + "/Businesses/:id/locales",
           method: "GET"
         },
 
-        // INTERNAL. Use Commerce.locales.create() instead.
-        "::create::Commerce::locales": {
-          url: urlBase + "/Commerces/:id/locales",
+        // INTERNAL. Use Business.locales.create() instead.
+        "::create::Business::locales": {
+          url: urlBase + "/Businesses/:id/locales",
           method: "POST"
         },
 
-        // INTERNAL. Use Commerce.locales.createMany() instead.
-        "::createMany::Commerce::locales": {
+        // INTERNAL. Use Business.locales.createMany() instead.
+        "::createMany::Business::locales": {
           isArray: true,
-          url: urlBase + "/Commerces/:id/locales",
+          url: urlBase + "/Businesses/:id/locales",
           method: "POST"
         },
 
-        // INTERNAL. Use Commerce.locales.destroyAll() instead.
-        "::delete::Commerce::locales": {
-          url: urlBase + "/Commerces/:id/locales",
+        // INTERNAL. Use Business.locales.destroyAll() instead.
+        "::delete::Business::locales": {
+          url: urlBase + "/Businesses/:id/locales",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Commerce.locales.count() instead.
-        "::count::Commerce::locales": {
-          url: urlBase + "/Commerces/:id/locales/count",
+        // INTERNAL. Use Business.locales.count() instead.
+        "::count::Business::locales": {
+          url: urlBase + "/Businesses/:id/locales/count",
           method: "GET"
         },
       }
@@ -3086,8 +4107,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#updateOrCreate
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#updateOrCreate
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -3121,8 +4142,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#update
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#update
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -3146,14 +4167,14 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         R["update"] = R["updateAll"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#destroyById
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#destroyById
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -3173,14 +4194,17 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Locale` object.)
+         * </em>
          */
         R["destroyById"] = R["deleteById"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#removeById
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#removeById
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -3200,15 +4224,18 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Locale` object.)
+         * </em>
          */
         R["removeById"] = R["deleteById"];
 
 
     /**
     * @ngdoc property
-    * @name lbServices.Locale#modelName
-    * @propertyOf lbServices.Locale
+    * @name toutCastServices.Locale#modelName
+    * @propertyOf toutCastServices.Locale
     * @description
     * The name of the model represented by this $resource,
     * i.e. `Locale`.
@@ -3217,23 +4244,23 @@ module.factory(
 
     /**
      * @ngdoc object
-     * @name lbServices.Locale.touts
-     * @header lbServices.Locale.touts
+     * @name toutCastServices.Locale.touts
+     * @header toutCastServices.Locale.touts
      * @object
      * @description
      *
      * The object `Locale.touts` groups methods
      * manipulating `Tout` instances related to `Locale`.
      *
-     * Call {@link lbServices.Locale#touts Locale.touts()}
+     * Call {@link toutCastServices.Locale#touts Locale.touts()}
      * to query all related instances.
      */
 
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#touts
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#touts
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -3243,7 +4270,7 @@ module.factory(
          *
          *  - `id` – `{*}` - PersistedModel id
          *
-         *  - `filter` – `{object=}` - 
+         *  - `filter` – `{object=}` -
          *
          * @param {function(Array.<Object>,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -3268,8 +4295,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale.touts#count
-         * @methodOf lbServices.Locale.touts
+         * @name toutCastServices.Locale.touts#count
+         * @methodOf toutCastServices.Locale.touts
          *
          * @description
          *
@@ -3293,7 +4320,7 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `count` – `{number=}` - 
+         *  - `count` – `{number=}` -
          */
         R.touts.count = function() {
           var TargetResource = $injector.get("Tout");
@@ -3303,8 +4330,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale.touts#create
-         * @methodOf lbServices.Locale.touts
+         * @name toutCastServices.Locale.touts#create
+         * @methodOf toutCastServices.Locale.touts
          *
          * @description
          *
@@ -3341,8 +4368,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale.touts#createMany
-         * @methodOf lbServices.Locale.touts
+         * @name toutCastServices.Locale.touts#createMany
+         * @methodOf toutCastServices.Locale.touts
          *
          * @description
          *
@@ -3379,8 +4406,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale.touts#destroyAll
-         * @methodOf lbServices.Locale.touts
+         * @name toutCastServices.Locale.touts#destroyAll
+         * @methodOf toutCastServices.Locale.touts
          *
          * @description
          *
@@ -3410,8 +4437,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale.touts#destroyById
-         * @methodOf lbServices.Locale.touts
+         * @name toutCastServices.Locale.touts#destroyById
+         * @methodOf toutCastServices.Locale.touts
          *
          * @description
          *
@@ -3443,8 +4470,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale.touts#findById
-         * @methodOf lbServices.Locale.touts
+         * @name toutCastServices.Locale.touts#findById
+         * @methodOf toutCastServices.Locale.touts
          *
          * @description
          *
@@ -3479,8 +4506,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale.touts#updateById
-         * @methodOf lbServices.Locale.touts
+         * @name toutCastServices.Locale.touts#updateById
+         * @methodOf toutCastServices.Locale.touts
          *
          * @description
          *
@@ -3519,8 +4546,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Locale#commerce
-         * @methodOf lbServices.Locale
+         * @name toutCastServices.Locale#commerce
+         * @methodOf toutCastServices.Locale
          *
          * @description
          *
@@ -3530,7 +4557,7 @@ module.factory(
          *
          *  - `id` – `{*}` - PersistedModel id
          *
-         *  - `refresh` – `{boolean=}` - 
+         *  - `refresh` – `{boolean=}` -
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -3544,11 +4571,11 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Commerce` object.)
+         * This usually means the response is a `Business` object.)
          * </em>
          */
         R.commerce = function() {
-          var TargetResource = $injector.get("Commerce");
+          var TargetResource = $injector.get("Business");
           var action = TargetResource["::get::Locale::commerce"];
           return action.apply(R, arguments);
         };
@@ -3558,13 +4585,13 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.Commerce
- * @header lbServices.Commerce
+ * @name toutCastServices.Business
+ * @header toutCastServices.Business
  * @object
  *
  * @description
  *
- * A $resource object for interacting with the `Commerce` model.
+ * A $resource object for interacting with the `Business` model.
  *
  * ## Example
  *
@@ -3574,93 +4601,93 @@ module.factory(
  *
  */
 module.factory(
-  "Commerce",
+  "Business",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/Commerces/:id",
+      urlBase + "/Businesses/:id",
       { 'id': '@id' },
       {
 
-        // INTERNAL. Use Commerce.businessCategories() instead.
+        // INTERNAL. Use Business.businessCategories() instead.
         "prototype$__get__businessCategories": {
-          url: urlBase + "/Commerces/:id/businessCategories",
+          url: urlBase + "/Businesses/:id/businessCategories",
           method: "GET"
         },
 
-        // INTERNAL. Use Commerce.businessCategories.create() instead.
+        // INTERNAL. Use Business.businessCategories.create() instead.
         "prototype$__create__businessCategories": {
-          url: urlBase + "/Commerces/:id/businessCategories",
+          url: urlBase + "/Businesses/:id/businessCategories",
           method: "POST"
         },
 
-        // INTERNAL. Use Commerce.businessCategories.update() instead.
+        // INTERNAL. Use Business.businessCategories.update() instead.
         "prototype$__update__businessCategories": {
-          url: urlBase + "/Commerces/:id/businessCategories",
+          url: urlBase + "/Businesses/:id/businessCategories",
           method: "PUT"
         },
 
-        // INTERNAL. Use Commerce.businessCategories.destroy() instead.
+        // INTERNAL. Use Business.businessCategories.destroy() instead.
         "prototype$__destroy__businessCategories": {
-          url: urlBase + "/Commerces/:id/businessCategories",
+          url: urlBase + "/Businesses/:id/businessCategories",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Commerce.locales.findById() instead.
+        // INTERNAL. Use Business.locales.findById() instead.
         "prototype$__findById__locales": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/Commerces/:id/locales/:fk",
+          url: urlBase + "/Businesses/:id/locales/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use Commerce.locales.destroyById() instead.
+        // INTERNAL. Use Business.locales.destroyById() instead.
         "prototype$__destroyById__locales": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/Commerces/:id/locales/:fk",
+          url: urlBase + "/Businesses/:id/locales/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Commerce.locales.updateById() instead.
+        // INTERNAL. Use Business.locales.updateById() instead.
         "prototype$__updateById__locales": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/Commerces/:id/locales/:fk",
+          url: urlBase + "/Businesses/:id/locales/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Commerce.locales() instead.
+        // INTERNAL. Use Business.locales() instead.
         "prototype$__get__locales": {
           isArray: true,
-          url: urlBase + "/Commerces/:id/locales",
+          url: urlBase + "/Businesses/:id/locales",
           method: "GET"
         },
 
-        // INTERNAL. Use Commerce.locales.create() instead.
+        // INTERNAL. Use Business.locales.create() instead.
         "prototype$__create__locales": {
-          url: urlBase + "/Commerces/:id/locales",
+          url: urlBase + "/Businesses/:id/locales",
           method: "POST"
         },
 
-        // INTERNAL. Use Commerce.locales.destroyAll() instead.
+        // INTERNAL. Use Business.locales.destroyAll() instead.
         "prototype$__delete__locales": {
-          url: urlBase + "/Commerces/:id/locales",
+          url: urlBase + "/Businesses/:id/locales",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Commerce.locales.count() instead.
+        // INTERNAL. Use Business.locales.count() instead.
         "prototype$__count__locales": {
-          url: urlBase + "/Commerces/:id/locales/count",
+          url: urlBase + "/Businesses/:id/locales/count",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#create
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#create
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -3687,18 +4714,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Commerce` object.)
+         * This usually means the response is a `Business` object.)
          * </em>
          */
         "create": {
-          url: urlBase + "/Commerces",
+          url: urlBase + "/Businesses",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#createMany
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#createMany
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -3725,19 +4752,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Commerce` object.)
+         * This usually means the response is a `Business` object.)
          * </em>
          */
         "createMany": {
           isArray: true,
-          url: urlBase + "/Commerces",
+          url: urlBase + "/Businesses",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#upsert
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#upsert
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -3764,18 +4791,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Commerce` object.)
+         * This usually means the response is a `Business` object.)
          * </em>
          */
         "upsert": {
-          url: urlBase + "/Commerces",
+          url: urlBase + "/Businesses",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#exists
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#exists
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -3797,17 +4824,17 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `exists` – `{boolean=}` - 
+         *  - `exists` – `{boolean=}` -
          */
         "exists": {
-          url: urlBase + "/Commerces/:id/exists",
+          url: urlBase + "/Businesses/:id/exists",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#findById
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#findById
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -3831,18 +4858,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Commerce` object.)
+         * This usually means the response is a `Business` object.)
          * </em>
          */
         "findById": {
-          url: urlBase + "/Commerces/:id",
+          url: urlBase + "/Businesses/:id",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#find
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#find
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -3864,19 +4891,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Commerce` object.)
+         * This usually means the response is a `Business` object.)
          * </em>
          */
         "find": {
           isArray: true,
-          url: urlBase + "/Commerces",
+          url: urlBase + "/Businesses",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#findOne
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#findOne
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -3898,18 +4925,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Commerce` object.)
+         * This usually means the response is a `Business` object.)
          * </em>
          */
         "findOne": {
-          url: urlBase + "/Commerces/findOne",
+          url: urlBase + "/Businesses/findOne",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#updateAll
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#updateAll
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -3933,17 +4960,17 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         "updateAll": {
-          url: urlBase + "/Commerces/update",
+          url: urlBase + "/Businesses/update",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#deleteById
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#deleteById
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -3963,17 +4990,20 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Business` object.)
+         * </em>
          */
         "deleteById": {
-          url: urlBase + "/Commerces/:id",
+          url: urlBase + "/Businesses/:id",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#count
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#count
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -3995,17 +5025,17 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `count` – `{number=}` - 
+         *  - `count` – `{number=}` -
          */
         "count": {
-          url: urlBase + "/Commerces/count",
+          url: urlBase + "/Businesses/count",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#prototype$updateAttributes
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#prototype$updateAttributes
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -4013,8 +5043,7 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
+         *  - `id` – `{*}` - PersistedModel id
          *
          * @param {Object} postData Request data.
          *
@@ -4032,42 +5061,79 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Commerce` object.)
+         * This usually means the response is a `Business` object.)
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/Commerces/:id",
+          url: urlBase + "/Businesses/:id",
           method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.Business#createChangeStream
+         * @methodOf toutCastServices.Business
+         *
+         * @description
+         *
+         * Create a change stream.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `options` – `{object=}` -
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `changes` – `{ReadableStream=}` -
+         */
+        "createChangeStream": {
+          url: urlBase + "/Businesses/change-stream",
+          method: "POST"
         },
 
         // INTERNAL. Use ToutUser.commerces() instead.
         "::get::ToutUser::commerces": {
-          url: urlBase + "/ToutsUsers/:id/commerces",
+          url: urlBase + "/ToutUsers/:id/commerces",
           method: "GET"
         },
 
         // INTERNAL. Use ToutUser.commerces.create() instead.
         "::create::ToutUser::commerces": {
-          url: urlBase + "/ToutsUsers/:id/commerces",
+          url: urlBase + "/ToutUsers/:id/commerces",
           method: "POST"
         },
 
         // INTERNAL. Use ToutUser.commerces.createMany() instead.
         "::createMany::ToutUser::commerces": {
           isArray: true,
-          url: urlBase + "/ToutsUsers/:id/commerces",
+          url: urlBase + "/ToutUsers/:id/commerces",
           method: "POST"
         },
 
         // INTERNAL. Use ToutUser.commerces.update() instead.
         "::update::ToutUser::commerces": {
-          url: urlBase + "/ToutsUsers/:id/commerces",
+          url: urlBase + "/ToutUsers/:id/commerces",
           method: "PUT"
         },
 
         // INTERNAL. Use ToutUser.commerces.destroy() instead.
         "::destroy::ToutUser::commerces": {
-          url: urlBase + "/ToutsUsers/:id/commerces",
+          url: urlBase + "/ToutUsers/:id/commerces",
           method: "DELETE"
         },
 
@@ -4083,8 +5149,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#updateOrCreate
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#updateOrCreate
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -4111,15 +5177,15 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Commerce` object.)
+         * This usually means the response is a `Business` object.)
          * </em>
          */
         R["updateOrCreate"] = R["upsert"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#update
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#update
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -4143,14 +5209,14 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         R["update"] = R["updateAll"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#destroyById
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#destroyById
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -4170,14 +5236,17 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Business` object.)
+         * </em>
          */
         R["destroyById"] = R["deleteById"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#removeById
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#removeById
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -4197,40 +5266,43 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Business` object.)
+         * </em>
          */
         R["removeById"] = R["deleteById"];
 
 
     /**
     * @ngdoc property
-    * @name lbServices.Commerce#modelName
-    * @propertyOf lbServices.Commerce
+    * @name toutCastServices.Business#modelName
+    * @propertyOf toutCastServices.Business
     * @description
     * The name of the model represented by this $resource,
-    * i.e. `Commerce`.
+    * i.e. `Business`.
     */
-    R.modelName = "Commerce";
+    R.modelName = "Business";
 
     /**
      * @ngdoc object
-     * @name lbServices.Commerce.businessCategories
-     * @header lbServices.Commerce.businessCategories
+     * @name toutCastServices.Business.businessCategories
+     * @header toutCastServices.Business.businessCategories
      * @object
      * @description
      *
-     * The object `Commerce.businessCategories` groups methods
-     * manipulating `BusinessCategory` instances related to `Commerce`.
+     * The object `Business.businessCategories` groups methods
+     * manipulating `BusinessCategory` instances related to `Business`.
      *
-     * Call {@link lbServices.Commerce#businessCategories Commerce.businessCategories()}
+     * Call {@link toutCastServices.Business#businessCategories Business.businessCategories()}
      * to query all related instances.
      */
 
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#businessCategories
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#businessCategories
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
@@ -4240,7 +5312,7 @@ module.factory(
          *
          *  - `id` – `{*}` - PersistedModel id
          *
-         *  - `refresh` – `{boolean=}` - 
+         *  - `refresh` – `{boolean=}` -
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -4259,14 +5331,14 @@ module.factory(
          */
         R.businessCategories = function() {
           var TargetResource = $injector.get("BusinessCategory");
-          var action = TargetResource["::get::Commerce::businessCategories"];
+          var action = TargetResource["::get::Business::businessCategories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce.businessCategories#create
-         * @methodOf lbServices.Commerce.businessCategories
+         * @name toutCastServices.Business.businessCategories#create
+         * @methodOf toutCastServices.Business.businessCategories
          *
          * @description
          *
@@ -4297,14 +5369,14 @@ module.factory(
          */
         R.businessCategories.create = function() {
           var TargetResource = $injector.get("BusinessCategory");
-          var action = TargetResource["::create::Commerce::businessCategories"];
+          var action = TargetResource["::create::Business::businessCategories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce.businessCategories#createMany
-         * @methodOf lbServices.Commerce.businessCategories
+         * @name toutCastServices.Business.businessCategories#createMany
+         * @methodOf toutCastServices.Business.businessCategories
          *
          * @description
          *
@@ -4335,14 +5407,14 @@ module.factory(
          */
         R.businessCategories.createMany = function() {
           var TargetResource = $injector.get("BusinessCategory");
-          var action = TargetResource["::createMany::Commerce::businessCategories"];
+          var action = TargetResource["::createMany::Business::businessCategories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce.businessCategories#destroy
-         * @methodOf lbServices.Commerce.businessCategories
+         * @name toutCastServices.Business.businessCategories#destroy
+         * @methodOf toutCastServices.Business.businessCategories
          *
          * @description
          *
@@ -4366,14 +5438,14 @@ module.factory(
          */
         R.businessCategories.destroy = function() {
           var TargetResource = $injector.get("BusinessCategory");
-          var action = TargetResource["::destroy::Commerce::businessCategories"];
+          var action = TargetResource["::destroy::Business::businessCategories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce.businessCategories#update
-         * @methodOf lbServices.Commerce.businessCategories
+         * @name toutCastServices.Business.businessCategories#update
+         * @methodOf toutCastServices.Business.businessCategories
          *
          * @description
          *
@@ -4404,38 +5476,38 @@ module.factory(
          */
         R.businessCategories.update = function() {
           var TargetResource = $injector.get("BusinessCategory");
-          var action = TargetResource["::update::Commerce::businessCategories"];
+          var action = TargetResource["::update::Business::businessCategories"];
           return action.apply(R, arguments);
         };
     /**
      * @ngdoc object
-     * @name lbServices.Commerce.locales
-     * @header lbServices.Commerce.locales
+     * @name toutCastServices.Business.locales
+     * @header toutCastServices.Business.locales
      * @object
      * @description
      *
-     * The object `Commerce.locales` groups methods
-     * manipulating `Locale` instances related to `Commerce`.
+     * The object `Business.locales` groups methods
+     * manipulating `Locale` instances related to `Business`.
      *
-     * Call {@link lbServices.Commerce#locales Commerce.locales()}
+     * Call {@link toutCastServices.Business#locales Business.locales()}
      * to query all related instances.
      */
 
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce#locales
-         * @methodOf lbServices.Commerce
+         * @name toutCastServices.Business#locales
+         * @methodOf toutCastServices.Business
          *
          * @description
          *
-         * Queries locales of Commerce.
+         * Queries locales of Business.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModel id
          *
-         *  - `filter` – `{object=}` - 
+         *  - `filter` – `{object=}` -
          *
          * @param {function(Array.<Object>,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -4454,18 +5526,18 @@ module.factory(
          */
         R.locales = function() {
           var TargetResource = $injector.get("Locale");
-          var action = TargetResource["::get::Commerce::locales"];
+          var action = TargetResource["::get::Business::locales"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce.locales#count
-         * @methodOf lbServices.Commerce.locales
+         * @name toutCastServices.Business.locales#count
+         * @methodOf toutCastServices.Business.locales
          *
          * @description
          *
-         * Counts locales of Commerce.
+         * Counts locales of Business.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -4485,18 +5557,18 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `count` – `{number=}` - 
+         *  - `count` – `{number=}` -
          */
         R.locales.count = function() {
           var TargetResource = $injector.get("Locale");
-          var action = TargetResource["::count::Commerce::locales"];
+          var action = TargetResource["::count::Business::locales"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce.locales#create
-         * @methodOf lbServices.Commerce.locales
+         * @name toutCastServices.Business.locales#create
+         * @methodOf toutCastServices.Business.locales
          *
          * @description
          *
@@ -4527,14 +5599,14 @@ module.factory(
          */
         R.locales.create = function() {
           var TargetResource = $injector.get("Locale");
-          var action = TargetResource["::create::Commerce::locales"];
+          var action = TargetResource["::create::Business::locales"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce.locales#createMany
-         * @methodOf lbServices.Commerce.locales
+         * @name toutCastServices.Business.locales#createMany
+         * @methodOf toutCastServices.Business.locales
          *
          * @description
          *
@@ -4565,14 +5637,14 @@ module.factory(
          */
         R.locales.createMany = function() {
           var TargetResource = $injector.get("Locale");
-          var action = TargetResource["::createMany::Commerce::locales"];
+          var action = TargetResource["::createMany::Business::locales"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce.locales#destroyAll
-         * @methodOf lbServices.Commerce.locales
+         * @name toutCastServices.Business.locales#destroyAll
+         * @methodOf toutCastServices.Business.locales
          *
          * @description
          *
@@ -4596,14 +5668,14 @@ module.factory(
          */
         R.locales.destroyAll = function() {
           var TargetResource = $injector.get("Locale");
-          var action = TargetResource["::delete::Commerce::locales"];
+          var action = TargetResource["::delete::Business::locales"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce.locales#destroyById
-         * @methodOf lbServices.Commerce.locales
+         * @name toutCastServices.Business.locales#destroyById
+         * @methodOf toutCastServices.Business.locales
          *
          * @description
          *
@@ -4629,14 +5701,14 @@ module.factory(
          */
         R.locales.destroyById = function() {
           var TargetResource = $injector.get("Locale");
-          var action = TargetResource["::destroyById::Commerce::locales"];
+          var action = TargetResource["::destroyById::Business::locales"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce.locales#findById
-         * @methodOf lbServices.Commerce.locales
+         * @name toutCastServices.Business.locales#findById
+         * @methodOf toutCastServices.Business.locales
          *
          * @description
          *
@@ -4665,14 +5737,14 @@ module.factory(
          */
         R.locales.findById = function() {
           var TargetResource = $injector.get("Locale");
-          var action = TargetResource["::findById::Commerce::locales"];
+          var action = TargetResource["::findById::Business::locales"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Commerce.locales#updateById
-         * @methodOf lbServices.Commerce.locales
+         * @name toutCastServices.Business.locales#updateById
+         * @methodOf toutCastServices.Business.locales
          *
          * @description
          *
@@ -4705,7 +5777,7 @@ module.factory(
          */
         R.locales.updateById = function() {
           var TargetResource = $injector.get("Locale");
-          var action = TargetResource["::updateById::Commerce::locales"];
+          var action = TargetResource["::updateById::Business::locales"];
           return action.apply(R, arguments);
         };
 
@@ -4714,8 +5786,8 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.Referal
- * @header lbServices.Referal
+ * @name toutCastServices.Referal
+ * @header toutCastServices.Referal
  * @object
  *
  * @description
@@ -4739,8 +5811,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#create
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#create
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -4777,8 +5849,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#createMany
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#createMany
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -4816,8 +5888,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#upsert
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#upsert
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -4854,8 +5926,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#exists
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#exists
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -4877,7 +5949,7 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `exists` – `{boolean=}` - 
+         *  - `exists` – `{boolean=}` -
          */
         "exists": {
           url: urlBase + "/Referals/:id/exists",
@@ -4886,8 +5958,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#findById
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#findById
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -4921,8 +5993,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#find
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#find
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -4955,8 +6027,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#findOne
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#findOne
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -4988,8 +6060,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#updateAll
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#updateAll
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -5013,7 +6085,7 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         "updateAll": {
           url: urlBase + "/Referals/update",
@@ -5022,8 +6094,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#deleteById
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#deleteById
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -5043,7 +6115,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Referal` object.)
+         * </em>
          */
         "deleteById": {
           url: urlBase + "/Referals/:id",
@@ -5052,8 +6127,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#count
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#count
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -5075,7 +6150,7 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `count` – `{number=}` - 
+         *  - `count` – `{number=}` -
          */
         "count": {
           url: urlBase + "/Referals/count",
@@ -5084,8 +6159,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#prototype$updateAttributes
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#prototype$updateAttributes
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -5093,8 +6168,7 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
+         *  - `id` – `{*}` - PersistedModel id
          *
          * @param {Object} postData Request data.
          *
@@ -5119,6 +6193,43 @@ module.factory(
           url: urlBase + "/Referals/:id",
           method: "PUT"
         },
+
+        /**
+         * @ngdoc method
+         * @name toutCastServices.Referal#createChangeStream
+         * @methodOf toutCastServices.Referal
+         *
+         * @description
+         *
+         * Create a change stream.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `options` – `{object=}` -
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `changes` – `{ReadableStream=}` -
+         */
+        "createChangeStream": {
+          url: urlBase + "/Referals/change-stream",
+          method: "POST"
+        },
       }
     );
 
@@ -5126,8 +6237,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#updateOrCreate
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#updateOrCreate
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -5161,8 +6272,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#update
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#update
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -5186,14 +6297,14 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         R["update"] = R["updateAll"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#destroyById
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#destroyById
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -5213,14 +6324,17 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Referal` object.)
+         * </em>
          */
         R["destroyById"] = R["deleteById"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Referal#removeById
-         * @methodOf lbServices.Referal
+         * @name toutCastServices.Referal#removeById
+         * @methodOf toutCastServices.Referal
          *
          * @description
          *
@@ -5240,15 +6354,18 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Referal` object.)
+         * </em>
          */
         R["removeById"] = R["deleteById"];
 
 
     /**
     * @ngdoc property
-    * @name lbServices.Referal#modelName
-    * @propertyOf lbServices.Referal
+    * @name toutCastServices.Referal#modelName
+    * @propertyOf toutCastServices.Referal
     * @description
     * The name of the model represented by this $resource,
     * i.e. `Referal`.
@@ -5305,9 +6422,13 @@ module
     // Note: LocalStorage converts the value to string
     // We are using empty string as a marker for null/undefined values.
     function save(storage, name, value) {
-      var key = propsPrefix + name;
-      if (value == null) value = '';
-      storage[key] = value;
+      try {
+        var key = propsPrefix + name;
+        if (value == null) value = '';
+        storage[key] = value;
+      } catch(err) {
+        console.log('Cannot access local/session storage:', err);
+      }
     }
 
     function load(name) {
@@ -5349,8 +6470,8 @@ module
 
   /**
    * @ngdoc object
-   * @name lbServices.LoopBackResourceProvider
-   * @header lbServices.LoopBackResourceProvider
+   * @name toutCastServices.LoopBackResourceProvider
+   * @header toutCastServices.LoopBackResourceProvider
    * @description
    * Use `LoopBackResourceProvider` to change the global configuration
    * settings used by all models. Note that the provider is available
@@ -5370,8 +6491,8 @@ module
   .provider('LoopBackResource', function LoopBackResourceProvider() {
     /**
      * @ngdoc method
-     * @name lbServices.LoopBackResourceProvider#setAuthHeader
-     * @methodOf lbServices.LoopBackResourceProvider
+     * @name toutCastServices.LoopBackResourceProvider#setAuthHeader
+     * @methodOf toutCastServices.LoopBackResourceProvider
      * @param {string} header The header name to use, e.g. `X-Access-Token`
      * @description
      * Configure the REST transport to use a different header for sending
@@ -5384,8 +6505,8 @@ module
 
     /**
      * @ngdoc method
-     * @name lbServices.LoopBackResourceProvider#setUrlBase
-     * @methodOf lbServices.LoopBackResourceProvider
+     * @name toutCastServices.LoopBackResourceProvider#setUrlBase
+     * @methodOf toutCastServices.LoopBackResourceProvider
      * @param {string} url The URL to use, e.g. `/api` or `//example.com/api`.
      * @description
      * Change the URL of the REST API server. By default, the URL provided
@@ -5398,8 +6519,8 @@ module
 
     /**
      * @ngdoc method
-     * @name lbServices.LoopBackResourceProvider#getUrlBase
-     * @methodOf lbServices.LoopBackResourceProvider
+     * @name toutCastServices.LoopBackResourceProvider#getUrlBase
+     * @methodOf toutCastServices.LoopBackResourceProvider
      * @description
      * Get the URL of the REST API server. The URL provided
      * to the code generator (`lb-ng` or `grunt-loopback-sdk-angular`) is used.

@@ -6,18 +6,23 @@
     </div>
   </ion-header-bar>
   <ion-content>
-    <form ng-submit="doLogin()">
+    <form>
       <div class="list">
         <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="loginData.username">
+          <span class="input-label">Email</span>
+          <input type="email" ng-model="credentials.email">
         </label>
         <label class="item item-input">
           <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
+          <input type="password" ng-model="credentials.password">
         </label>
+        <label class="item item-input">
+          <span class="input-label">Repeat password</span>
+          <input type="password" ng-model="credentials.repeatedPassword">
+        </label>
+        <h6 ng-if="errorState.state" class="item assertive">{{errorState.message}}</h6>
         <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
+          <button class="button button-block button-positive" ng-click="signUp()">Sign Up</button>
         </label>
       </div>
     </form>
