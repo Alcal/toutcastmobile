@@ -1,11 +1,21 @@
 angular.module('toutcast.controllers.slide', ['ngAnimate'])
 
   .controller('SlideCtrl',
-    function ($scope, $stateParams, $ionicScrollDelegate, ionicMaterialInk, $timeout, Tout)
+    function ($scope, $stateParams, $ionicScrollDelegate, ionicMaterialInk, $timeout, Tout, ToutService)
     {
-      // $scope.$on('$ionicView.enter', function(e) {
-      // 	//$ionicScrollDelegate.
-      // 		});
+      $scope.$on('$ionicView.enter', function (e)
+      {
+        ToutService.get($stateParams.toutId).then(
+          function (tout)
+          {
+            console.log(JSON.stringify(tout));
+            $scope.tout = tout;
+          },
+        function(err)
+        {
+          console.error(JSON.stringify(err));
+        });
+      });
 
       $scope.slideTrack = $ionicScrollDelegate.$getByHandle('slide-track');
       $scope.status = {position: 0};
@@ -85,10 +95,11 @@ angular.module('toutcast.controllers.slide', ['ngAnimate'])
 
       $scope.redeem = function ()
       {
-        if(!$scope.loadingTout){
+        if (!$scope.loadingTout)
+        {
           $scope.loadingTout = true;
           console.log($stateParams.toutId);
-          Tout.redeem({toutId:$stateParams.toutId}, redemptionFulfilled, redemptionRejected);
+          Tout.redeem({toutId: $stateParams.toutId}, redemptionFulfilled, redemptionRejected);
         }
       }
 

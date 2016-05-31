@@ -5,7 +5,7 @@ angular.module('toutcast.services.tout', [])
   {
     // Might use a resource here that returns a JSON array
 
-    var touts;
+    var touts = [];
 
     var allPromise = new Promise(function (fulfillPromise, rejectPromise)
     {
@@ -19,7 +19,7 @@ angular.module('toutcast.services.tout', [])
       }
       else
       {
-        Tout.find({where:{live:true}},
+        Tout.find({where: {live: true}},
 
           //The following function is executed if call was successful
           function (data)
@@ -38,14 +38,44 @@ angular.module('toutcast.services.tout', [])
       }
     });
 
-    var refreshPromise = new Promise(
+    var getByIdPromise = function(toutId)
+    {
+
+      console.log("looking for: "+toutId);
+      return new Promise(
       function (fulfillPromise, rejectPromise)
       {
-        Tout.find({where:{live:true}},
+        for (var i = 0; i < touts.length; i++)
+        {
+          console.log("looking at: "+touts[i].id);
+          if (touts[i].id == toutId)
+          {
+            console.log("found: "+touts[i].id);
+            fulfillPromise(touts[i]);
+          }
+        }
+        Tout.findById(toutId,
+          function (data)
+          {
+            fulfillPromise(data)
+          },
+          function (err)
+          {
+            console.error(err);
+            rejectPromise(err);
+          });
+      })
+    };
+
+    var refreshPromise = function(){return new Promise(
+      function (fulfillPromise, rejectPromise)
+      {
+        Tout.find({where: {live: true}},
 
           //The following function is executed if call was successful
           function (data)
           {
+            touts = data;
             //After a successful call, we store the data locally to reduce service calls
             localStorageService.set('Touts', data);
             fulfillPromise(data);
@@ -57,21 +87,12 @@ angular.module('toutcast.services.tout', [])
             console.error(JSON.stringify(err));
             rejectPromise(err);
           });
-      });
+      })
+    };
 
     return {
       all: allPromise,
-      get: function (toutId)
-      {
-        for (var i = 0; i < touts.length; i++)
-        {
-          if (touts[i].id === parseInt(toutId))
-          {
-            return touts[i];
-          }
-        }
-        return null;
-      },
+      get: getByIdPromise,
       refresh: refreshPromise
     };
   });

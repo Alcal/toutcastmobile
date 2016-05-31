@@ -1,6 +1,10 @@
 <ion-view view-title="ToutCast">
   <ion-content>
    <ion-list class="list">
+     <ion-refresher
+       pulling-text="Pull to refresh..."
+       on-refresh="refresh()">
+     </ion-refresher>
    	<ion-item href="#/app/home/feed/{{t.id}}" class="item item-avatar animate-fade-slide-in-right" ng-repeat="t in touts">
    		<img ng-ref="{{::t.logo}}" ng-show="t.logo"></img>
       <div class="tc-avatar-icon positive-bg circular-div" ng-hide="t.logo">
@@ -11,7 +15,7 @@
    	</ion-item>
    </ion-list>
 
-   <div style="width:100%;text-align: center;">
+   <div style="width:100%;text-align: center;" ng-show="loading">
     <ion-spinner class="spinner-balanced" icon="dots"></ion-spinner>
    </div>
    <div style="width:100%;text-align: center;" ng-show = "errorState">
