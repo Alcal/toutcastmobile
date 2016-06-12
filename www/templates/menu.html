@@ -15,9 +15,9 @@
   <ion-side-menu side="left">
     <ion-content>
       <div class="tc-menu-bg">
-        <img class="tc-img-circle tc-profile-pic" src="../img/profile.png"/>
+        <img class="tc-img-circle tc-profile-pic" ng-src="{{user.picture}}"/>
         <div class="tc-profile-info light">
-          Alejandro Castro
+          {{user.name}}
         </div>
       </div>
       <ion-list class="list">

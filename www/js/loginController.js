@@ -17,7 +17,7 @@ angular.module('toutcast.controllers.login', [])
     {
       if($scope.credentials.password!=$scope.credentials.repeatedPassword)
       {
-
+        //TODO: handle password mismatch error
       }
       var loginSuccess = function (data)
       {
@@ -91,7 +91,7 @@ angular.module('toutcast.controllers.login', [])
       facebookConnectPlugin.api('/me?fields=email,name&access_token=' + authResponse.accessToken, null,
         function (response)
         {
-          console.log(response);
+          console.log("Facebook: "+JSON.stringify(response));
           info.resolve(response);
         },
         function (response)
@@ -123,6 +123,7 @@ angular.module('toutcast.controllers.login', [])
             getFacebookProfileInfo(success.authResponse)
               .then(function (profileInfo)
               {
+                console.log(JSON.stringify(profileInfo));
                 // For the purpose of this example I will store user data on local storage
                 UserService.setUser({
                   authResponse: success.authResponse,

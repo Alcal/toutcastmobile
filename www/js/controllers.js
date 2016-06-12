@@ -1,6 +1,6 @@
 angular.module('toutcast.controllers', ['toutcast.controllers.map','toutcast.controllers.feed', 'toutcast.controllers.slide', 'toutcast.controllers.login'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, ionicMaterialInk) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, ionicMaterialInk, UserService) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -11,6 +11,7 @@ angular.module('toutcast.controllers', ['toutcast.controllers.map','toutcast.con
 
   // Form data for the login modal
   $scope.loginData = {};
+  $scope.user = UserService.getUser();
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
