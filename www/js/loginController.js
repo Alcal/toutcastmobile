@@ -1,6 +1,6 @@
 angular.module('toutcast.controllers.login', [])
 
-  .controller('LoginCtrl', function ($scope, $state, $q, UserService, $ionicLoading, ToutUser)
+  .controller('LoginCtrl', function ($scope, $state, $q, UserService, $ionicLoading, ToutUser, $rootScope)
   {
 
 
@@ -13,6 +13,11 @@ angular.module('toutcast.controllers.login', [])
       realm:"mobile"
     };
 
+    $rootScope.currentUser =
+    {
+      signedIn: false
+    };
+
     $scope.signUp = function ()
     {
       if($scope.credentials.password!=$scope.credentials.repeatedPassword)
@@ -21,7 +26,9 @@ angular.module('toutcast.controllers.login', [])
       }
       var loginSuccess = function (data)
       {
+        $rootScope.currentUser.signedIn = true;
         console.log(JSON.stringify(data));
+        $state.go('app.home');
       };
       var loginFail = function (errorResponse)
       {
@@ -67,6 +74,7 @@ angular.module('toutcast.controllers.login', [])
             email: profileInfo.email,
             picture: "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
           });
+          $rootScope.currentUser.signedIn = true;
           $ionicLoading.hide();
           $state.go('app.home');
         }, function (fail)

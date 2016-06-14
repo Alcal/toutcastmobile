@@ -15,7 +15,7 @@
   <ion-side-menu side="left">
     <ion-content>
       <div class="tc-menu-bg">
-        <img class="tc-img-circle tc-profile-pic" ng-src="{{user.picture}}"/>
+        <img class="tc-img-circle tc-profile-pic" ng-src="{{user.picture}}" ng-show="user.picture"/>
         <div class="tc-profile-info light">
           {{user.name}}
         </div>
@@ -25,7 +25,7 @@
           <i class="icon ion-android-home"></i>
           Home
         </ion-item>
-        <ion-item class="item item-icon-left ink ink-dark" menu-close ui-sref="app.login">
+        <ion-item class="item item-icon-left ink ink-dark" menu-close ui-sref="app.login" ng-hide="currentUser.signedIn">
           <i class="icon ion-log-in"></i>
           Login
         </ion-item>
