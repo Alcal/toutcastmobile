@@ -17,7 +17,7 @@
 	vertical-align: top;
 	padding: 5vmin 5vmin 5vmin 0vmin;
 	font-size: medium;
-	font-weight: bold;	
+	font-weight: bold;
 }
 
 .tc-menu-bg
@@ -129,10 +129,10 @@ div.spinner-container
 
 .slide-track
 {
-	width: 40%; 
-	height: 110%; 
-	bottom:0px; 
-	margin-right: auto; 
+	width: 40%;
+	height: 110%;
+	bottom:0px;
+	margin-right: auto;
 	margin-left: auto;
 }
 
@@ -141,37 +141,41 @@ div.sleigh
 	z-index: 500;
 	height:15%;
 	overflow: hidden;
-	padding: 2vmin;
 	text-align: center;
 }
 
 div.sleigh i
 {
-	font-size: 12vmin;
+	font-size: 11vmin;
+}
+
+div.sleigh div
+{
+  margin:0;
 }
 
 .shrink.ng-enter {
 	-webkit-transition: 0.5s linear all; /* Chrome */
 	transition: 0.5s linear all;
 	width: 200px;
-	height: 200px;	
+	height: 200px;
 }
- 
+
 .shrink.ng-enter.ng-enter-active {
 	width: 0px;
 	height: 0px;
 }
 
-.grow.ng-animate{	
+.grow.ng-animate{
 	-webkit-transition: 0.4s linear all; /* Chrome */
 	transition: 0.4s linear all;
 }
 
 .grow.ng-enter {
 	width: 400px;
-	height: 400px;	
+	height: 400px;
 }
- 
+
 .grow.ng-enter.ng-enter-active {
 	width: 200vmax;
 	height: 200vmax;
@@ -179,9 +183,9 @@ div.sleigh i
 
 .grow.ng-leave {
 	width: 500px;
-	height: 500px;	
+	height: 500px;
 }
- 
+
 .grow.ng-leave.ng-leave-active {
 	width: 0px;
 	height: 0px;

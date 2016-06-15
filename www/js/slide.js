@@ -86,11 +86,38 @@ angular.module('toutcast.controllers.slide', ['ngAnimate'])
       var redemptionRejected = function (errorMessage)
       {
         console.log(errorMessage);
+        $scope.errorMsg = getErrorMsg(errorMessage);
         $scope.approved = false;
         $scope.failed = true;
         $scope.done = true;
         $scope.loadingTout = false;
         $scope.slideTrack.scrollTop(true);
+      };
+
+      var getErrorMsg = function(errorMessage)
+      {
+        switch(errorMessage.status)
+        {
+          case 401:
+                return "Regístrate para canjear ofertas";
+          case 403:
+                switch(errorMessage.name)
+                {
+                  case "PIN":
+                    return "PIN incorrecto";
+                  case "USED":
+                    return "Ya canjeaste esta oferta";
+                  case "MAX":
+                    return "Se alcanzó el límite de ofertas";
+                  default:
+                    return "Error en el canje, intenta de nuevo";
+                }
+          case 404:
+                return "Oferta no encontrada";
+          case 500:
+          default:
+                return "Error inesperado, intenta de nuevo";
+        }
       };
 
       $scope.redeem = function ()

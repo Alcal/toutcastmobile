@@ -9,8 +9,9 @@ angular.module('toutcast.services.tout', [])
 
     var allPromise = new Promise(function (fulfillPromise, rejectPromise)
     {
-      if (touts)
+      if (touts && touts.lenght >0)
       {
+        console.log(touts.length);
         fulfillPromise(touts);
       }
       else if (localStorageService.get('Touts'))
@@ -40,12 +41,12 @@ angular.module('toutcast.services.tout', [])
 
     var getByIdPromise = function(toutId)
     {
-
-      console.log("looking for: "+toutId);
       return new Promise(
       function (fulfillPromise, rejectPromise)
       {
-        for (var i = 0; i < touts.length; i++)
+        console.log("There are "+touts.length+" touts");
+        console.log("Searching for "+toutId);
+        for (var i = 0; i <= touts.length; i++)
         {
           console.log("looking at: "+touts[i].id);
           if (touts[i].id == toutId)
@@ -54,6 +55,7 @@ angular.module('toutcast.services.tout', [])
             fulfillPromise(touts[i]);
           }
         }
+        console.log("Skipped search loop for "+toutId);
         Tout.findById(toutId,
           function (data)
           {

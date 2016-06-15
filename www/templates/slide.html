@@ -13,9 +13,9 @@
 			</div>
 		</div>
 		<div class="crescent-container">
-			<div class="circularDiv crescent positive-bg grow" ng-style="crescentStyle" ></div>				
+			<div class="circularDiv crescent positive-bg grow" ng-style="crescentStyle" ></div>
 			<div class="circularDiv crescent positive-bg grow" ng-if="grown" ></div>
-			<div class="circularDiv crescent energized-bg grow" ng-if="failed" ></div>		
+			<div class="circularDiv crescent energized-bg grow" ng-if="failed" ></div>
 			<div class="circularDiv crescent light-bg grow" ng-if="loadingTout"></div>
 		</div>
 		<ion-scroll scrollbar-x="false" scrollbar-y="false" delegate-handle="slide-track" class="slide-track" >
@@ -31,7 +31,7 @@
 				</div>
 				<div href="#" on-touch="disableScrolling()" on-release="enableScrolling()" ng-show="failed" class="light-bg item-text-wrap sleigh" direction="y">
 					<i class="icon energized ion-android-more-horizontal"></i>
-					<h5 class="energized">Error al canjear</h5>
+					<h5 class="energized">{{errorMsg}}</h5>
 				</div>
 			</div>
 			<div on-touch="disableScrolling()" on-release="enableScrolling()" style="height:110%"></div>
