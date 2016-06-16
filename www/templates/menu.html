@@ -18,6 +18,7 @@
         <img class="tc-img-circle tc-profile-pic" ng-src="{{user.picture}}" ng-show="user.picture"/>
         <div class="tc-profile-info light">
           {{user.name}}
+          {{user.email}}
         </div>
       </div>
       <ion-list class="list">
@@ -25,7 +26,7 @@
           <i class="icon ion-android-home"></i>
           Home
         </ion-item>
-        <ion-item class="item item-icon-left ink ink-dark" menu-close ui-sref="app.login" ng-hide="currentUser.signedIn">
+        <ion-item class="item item-icon-left ink ink-dark" menu-close ui-sref="app.login" ng-hide="isAuthenticated">
           <i class="icon ion-log-in"></i>
           Login
         </ion-item>

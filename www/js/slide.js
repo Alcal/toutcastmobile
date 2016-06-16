@@ -8,13 +8,12 @@ angular.module('toutcast.controllers.slide', ['ngAnimate'])
         ToutService.get($stateParams.toutId).then(
           function (tout)
           {
-            console.log(JSON.stringify(tout));
             $scope.tout = tout;
           },
-        function(err)
-        {
-          console.error(JSON.stringify(err));
-        });
+          function (err)
+          {
+            console.error(JSON.stringify(err));
+          });
       });
 
       $scope.slideTrack = $ionicScrollDelegate.$getByHandle('slide-track');
@@ -28,7 +27,7 @@ angular.module('toutcast.controllers.slide', ['ngAnimate'])
         $scope.crescentStyle.width = newValue * 2.1 + 'px';
         if (newValue > 500)
         {
-          $scope.redeem();
+          $scope.promptPin();
         }
       });
 
@@ -44,6 +43,75 @@ angular.module('toutcast.controllers.slide', ['ngAnimate'])
         {
           $scope.slideTrack.scrollBottom(true);
           $scope.grown = true;
+        }
+      };
+
+
+      ionicMaterialInk.displayEffect({duration: 600});
+
+      var redemptionFulfilled = function (data)
+      {
+        $scope.approved = true;
+        $scope.failed = false;
+        $scope.done = true;
+        $scope.loadingTout = false;
+        $scope.slideTrack.scrollTop(true);
+      };
+      var redemptionRejected = function (errorMessage)
+      {
+        console.log(errorMessage);
+        $scope.errorMsg = getErrorMsg(errorMessage);
+        $scope.approved = false;
+        $scope.failed = true;
+        $scope.done = true;
+        $scope.loadingTout = false;
+        $scope.slideTrack.scrollTop(true);
+      };
+
+      var getErrorMsg = function (errorMessage)
+      {
+        switch (errorMessage.status)
+        {
+          case 401:
+            return "Registrate para canjear ofertas";
+          case 403:
+            switch (errorMessage.name)
+            {
+              case "PIN":
+                return "PIN incorrecto";
+              case "USED":
+                return "Ya canjeaste esta oferta";
+              case "MAX":
+                return "Se alcanzó el límite de ofertas";
+              default:
+                return "Error en el canje, intenta de nuevo";
+            }
+          case 404:
+            return "Oferta no encontrada";
+          case 500:
+          default:
+            return "Error inesperado, intenta de nuevo";
+        }
+      };
+
+      $scope.promptPin = function ()
+      {
+        $scope.pinPrompted = true;
+      };
+
+      $scope.sendPIN = function (pinInput)
+      {
+        $scope.pinPrompted = false;
+        $scope.pin = pinInput;
+        $scope.redeem();
+      };
+
+      $scope.redeem = function ()
+      {
+        if (!$scope.loadingTout)
+        {
+          $scope.loadingTout = true;
+          Tout.redeem({toutId: $stateParams.toutId, pin: $scope.pin}, redemptionFulfilled, redemptionRejected);
         }
       };
 
@@ -71,64 +139,6 @@ angular.module('toutcast.controllers.slide', ['ngAnimate'])
         width: '0px',
         height: '0px'
       };
-
-      ionicMaterialInk.displayEffect({duration: 600});
-
-      var redemptionFulfilled = function (data)
-      {
-        console.log(data);
-        $scope.approved = true;
-        $scope.failed = false;
-        $scope.done = true;
-        $scope.loadingTout = false;
-        $scope.slideTrack.scrollTop(true);
-      };
-      var redemptionRejected = function (errorMessage)
-      {
-        console.log(errorMessage);
-        $scope.errorMsg = getErrorMsg(errorMessage);
-        $scope.approved = false;
-        $scope.failed = true;
-        $scope.done = true;
-        $scope.loadingTout = false;
-        $scope.slideTrack.scrollTop(true);
-      };
-
-      var getErrorMsg = function(errorMessage)
-      {
-        switch(errorMessage.status)
-        {
-          case 401:
-                return "Regístrate para canjear ofertas";
-          case 403:
-                switch(errorMessage.name)
-                {
-                  case "PIN":
-                    return "PIN incorrecto";
-                  case "USED":
-                    return "Ya canjeaste esta oferta";
-                  case "MAX":
-                    return "Se alcanzó el límite de ofertas";
-                  default:
-                    return "Error en el canje, intenta de nuevo";
-                }
-          case 404:
-                return "Oferta no encontrada";
-          case 500:
-          default:
-                return "Error inesperado, intenta de nuevo";
-        }
-      };
-
-      $scope.redeem = function ()
-      {
-        if (!$scope.loadingTout)
-        {
-          $scope.loadingTout = true;
-          console.log($stateParams.toutId);
-          Tout.redeem({toutId: $stateParams.toutId}, redemptionFulfilled, redemptionRejected);
-        }
-      }
 
 
     });

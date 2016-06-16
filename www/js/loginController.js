@@ -13,24 +13,29 @@ angular.module('toutcast.controllers.login', [])
       realm:"mobile"
     };
 
-    $rootScope.currentUser =
-    {
-      signedIn: false
-    };
-
     $scope.signUp = function ()
     {
       if($scope.credentials.password!=$scope.credentials.repeatedPassword)
       {
         //TODO: handle password mismatch error
       }
-      var loginSuccess = function (data)
+      var signupSuccess = function (data)
       {
-        $rootScope.currentUser.signedIn = true;
-        console.log(JSON.stringify(data));
+
+        var loginSuccess = function(data)
+        {
+          UserService.setUser(data.user);
+          $rootScope.isAuthenticated = ToutUser.isAuthenticated();
+        };
+        var loginFail = function(err)
+        {
+          console.log(JSON.stringify(err));
+        };
+
+        ToutUser.login($scope.credentials, loginSuccess, loginFail);
         $state.go('app.home');
       };
-      var loginFail = function (errorResponse)
+      var signupFail = function (errorResponse)
       {
         console.log(JSON.stringify(errorResponse));
 
@@ -48,10 +53,14 @@ angular.module('toutcast.controllers.login', [])
         }
       };
 
-      ToutUser.create($scope.credentials,loginSuccess, loginFail);
+
+
+      ToutUser.create($scope.credentials,signupSuccess, signupFail);
 
     };
 
+
+    //Don't go beyond!
     // This is the success callback from the login method
     var fbLoginSuccess = function (response)
     {
@@ -99,7 +108,6 @@ angular.module('toutcast.controllers.login', [])
       facebookConnectPlugin.api('/me?fields=email,name&access_token=' + authResponse.accessToken, null,
         function (response)
         {
-          console.log("Facebook: "+JSON.stringify(response));
           info.resolve(response);
         },
         function (response)

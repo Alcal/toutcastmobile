@@ -1,6 +1,6 @@
 angular.module('toutcast.controllers', ['toutcast.controllers.map','toutcast.controllers.feed', 'toutcast.controllers.slide', 'toutcast.controllers.login'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, ionicMaterialInk, UserService) {
+.controller('AppCtrl', function($scope,$rootScope, $ionicModal, $timeout, ionicMaterialInk, UserService, LoopBackAuth, ToutUser) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -12,6 +12,9 @@ angular.module('toutcast.controllers', ['toutcast.controllers.map','toutcast.con
   // Form data for the login modal
   $scope.loginData = {};
   $scope.user = UserService.getUser();
+  $rootScope.isAuthenticated = ToutUser.isAuthenticated();
+  console.log(JSON.stringify(LoopBackAuth.currentUserData));
+  $scope.user.email = UserService.getUser().email;
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -33,7 +36,6 @@ angular.module('toutcast.controllers', ['toutcast.controllers.map','toutcast.con
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
@@ -110,12 +112,11 @@ angular.module('toutcast.controllers', ['toutcast.controllers.map','toutcast.con
             fabs[0].remove();
         }
     };
-  
+
   ionicMaterialInk.displayEffect({duration:600});
 })
 
 .controller('LandingCtrl', function($scope, $stateParams, ionicMaterialInk) {
-  console.log('Landing active');
   ionicMaterialInk.displayEffect({duration:600});
 })
 

@@ -12,6 +12,13 @@
 				</ion-spinner>
 			</div>
 		</div>
+    <div ng-if="pinPrompted" class="pin-view light-bg">
+      <p class="positive">Intruduce el PIN</p>
+      <div class="spinner-container">
+        <input class="stable-bg input pin-field" type="tel" ng-model="pinInput" maxlength="4"/>
+        <button ng-click="sendPIN(pinInput)" class="button button-positive button-outline button-small">Enviar</button>
+      </div>
+    </div>
 		<div class="crescent-container">
 			<div class="circularDiv crescent positive-bg grow" ng-style="crescentStyle" ></div>
 			<div class="circularDiv crescent positive-bg grow" ng-if="grown" ></div>
@@ -23,7 +30,7 @@
 				<div on-touch="disableScrolling()" on-release="enableScrolling()" style="height: 85%"></div>
 				<div href="#" ng-hide="done" class="balanced-bg item-text-wrap ink ink-light sleigh" on-drag-up="onDragUp()" on-release="onSleighRelease()" direction="y">
 					<i class="icon light ion-pricetags"></i>
-					<h5 class="light">Título de Oferta</h5>
+					<h5 class="light">{{tout.title}}</h5>
 				</div>
 				<div href="#" on-touch="disableScrolling()" on-release="enableScrolling()" ng-show="approved" class="light-bg item-text-wrap sleigh" direction="y">
 					<i class="icon positive ion-android-done-all"></i>

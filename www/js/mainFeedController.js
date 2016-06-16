@@ -32,7 +32,6 @@ angular.module('toutcast.controllers.feed',[])
 
   $scope.refresh = function()
   {
-    console.log("refrrreshing!");
     ToutService.refresh().then(onToutsFulFill,onToutsReject);
   }
 

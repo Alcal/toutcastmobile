@@ -88,6 +88,35 @@ div.loading-view p
 	text-align: center;
 }
 
+div.pin-view{
+  position: absolute;
+  padding: 2vmin;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+  z-index: 1000;
+  width: 50vmin;
+  height: 40vmin;
+}
+
+div.pin-view p
+{
+  text-align: center;
+}
+
+input.pin-field
+{
+  align-items: center;
+  text-align: center;
+  font-size: x-large;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4px;
+  width: 80%;
+}
+
 .circularDiv
 {
 	border-radius: 50%;
