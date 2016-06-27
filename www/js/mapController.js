@@ -1,16 +1,19 @@
 angular.module('toutcast.controllers.map', [])
 
-  .controller('MainMapCtrl', function ($scope, $stateParams, $cordovaGeolocation, $http, ionicMaterialInk, ToutService)
+  .controller('MainMapCtrl', function ($scope, $stateParams,$state, $compile, $cordovaGeolocation, $http, ionicMaterialInk, ToutService)
   {
     var options = {timeout: 10000, enableHighAccuracy: false};
     $scope.lastInfoWindow = null;
+
+    var defaultCenter = new google.maps.LatLng(31.859370, -116.610601);
 
     var mapOptions = {
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       mapTypeControl: false,
       streetViewControl: false,
-      disableAutoPan: true
+      disableAutoPan: true,
+      center: defaultCenter
     };
 
     var markerIcon =
@@ -45,16 +48,11 @@ angular.module('toutcast.controllers.map', [])
       'background-color': 'white' // 3D effect to highlight the button
     };
 
-    console.log("Will get location...");
-    $cordovaGeolocation.getCurrentPosition(options).then(function (position)
+    $scope.loadMapElements = function()
     {
-      console.log("Got Location");
-      $scope.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      mapOptions.center = $scope.latLng;
-      $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-      google.maps.event.addListenerOnce($scope.map, 'idle', function ()
+      if ($scope.mapLoaded && $scope.locationLoaded)
       {
+        $scope.map.setCenter($scope.latLng);
         ToutService.all.then(
           function (data)
           {
@@ -63,7 +61,7 @@ angular.module('toutcast.controllers.map', [])
             {
               $scope.touts[x].marker = createMarker(x);
               $scope.touts[x].marker.infowindow = new google.maps.InfoWindow({
-                content: getInfoWindow($scope.touts[x]),
+                content: $compile(getInfoWindow($scope.touts[x]))($scope)[0],
                 disableAutoPan: true
               });
               $scope.touts[x].marker.addListener('click', function ()
@@ -78,19 +76,41 @@ angular.module('toutcast.controllers.map', [])
           {
             console.error(JSON.stringify(toutError));
           })
-      }, function (err)
+      }
+    };
+
+    $cordovaGeolocation.getCurrentPosition(options).then(
+      function (position)
       {
-        console.error("Maps Error: "+JSON.stringify(err));
+        $scope.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        $scope.locationLoaded = true;
+        $scope.loadMapElements();
+
+      },
+      function (err)
+      {
+        console.error("Geolocation Error: " + JSON.stringify(err));
       });
-    }, function (err)
-    {
-      console.error("Geolocation Error: "+JSON.stringify(err));
-    });
+
+    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+    google.maps.event.addListenerOnce($scope.map, 'idle',
+      function ()
+      {
+        $scope.mapLoaded = true;
+        $scope.loadMapElements();
+      },
+      function (err)
+      {
+        console.error("Maps Error: " + JSON.stringify(err));
+      });
+
 
 
     ionicMaterialInk.displayEffect({duration: 600});
 
-    var createMarker = function(index){
+    var createMarker = function (index)
+    {
       return new google.maps.Marker({
         title: $scope.touts[index].title,
         position: new google.maps.LatLng($scope.touts[index].location.lat, $scope.touts[index].location.lng),
@@ -100,7 +120,8 @@ angular.module('toutcast.controllers.map', [])
       });
     };
 
-    var createInfoWindow = function(index){
+    var createInfoWindow = function (index)
+    {
       google.maps.event.addListener($scope.touts[index].marker.infowindow, 'domready', function ()
       {
 
@@ -135,16 +156,24 @@ angular.module('toutcast.controllers.map', [])
       });
     };
 
+    $scope.goToFeed = function(toutId)
+    {
+      $state.go('app.home.feed-detail',{'toutId':toutId});
+    }
+
     var getInfoWindow = function (tout)
     {
-      return '<div class=\"item item-icon-left map-item ink ink-dark\" href="#">'
+      return '<div class=\"item item-icon-left map-item ink ink-dark\" ng-click=\"goToFeed(\''
+        +tout.id
+        +'\')\" >'
         + '<i class=\"icon positive ion-pricetags\"></i>'
         + '<h3>' + tout.title + '</h3>'
         + '<p>' + tout.content + '</p>'
         + '</div>';
     };
 
-    var handleMarkerClick = function(){
+    var handleMarkerClick = function ()
+    {
       if ($scope.lastInfoWindow)
       {
         $scope.lastInfoWindow.close();

@@ -1,4 +1,9 @@
-angular.module('toutcast.controllers', ['toutcast.controllers.map','toutcast.controllers.feed', 'toutcast.controllers.slide', 'toutcast.controllers.login'])
+angular.module('toutcast.controllers', 
+  ['toutcast.controllers.map',
+    'toutcast.controllers.feed', 
+    'toutcast.controllers.slide', 
+    'toutcast.controllers.login',
+    'toutcast.controllers.tabs'])
 
 .controller('AppCtrl', function($scope,$rootScope, $ionicModal, $timeout, ionicMaterialInk, UserService, LoopBackAuth, ToutUser) {
 

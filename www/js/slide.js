@@ -75,7 +75,7 @@ angular.module('toutcast.controllers.slide', ['ngAnimate'])
           case 401:
             return "Registrate para canjear ofertas";
           case 403:
-            switch (errorMessage.name)
+            switch (errorMessage.data.error.name)
             {
               case "PIN":
                 return "PIN incorrecto";

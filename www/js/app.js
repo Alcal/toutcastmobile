@@ -105,7 +105,8 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
     url: '/home',
     views: {
       'menuContent': {
-        templateUrl: 'templates/home.html'
+        templateUrl: 'templates/home.html',
+        controller:'TabsCtrl'
       }
     }
   })
