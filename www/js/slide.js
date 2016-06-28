@@ -1,10 +1,11 @@
 angular.module('toutcast.controllers.slide', ['ngAnimate'])
 
   .controller('SlideCtrl',
-    function ($scope, $stateParams, $ionicScrollDelegate, ionicMaterialInk, $timeout, Tout, ToutService)
+    function ($scope, $state, $stateParams, $ionicScrollDelegate, ionicMaterialInk, $timeout, Tout, ToutService)
     {
-      $scope.$on('$ionicView.enter', function (e)
+      $scope.$on('$ionicView.beforeEnter', function (event, viewData)
       {
+        viewData.enableBack = true;
         ToutService.get($stateParams.toutId).then(
           function (tout)
           {
@@ -13,6 +14,7 @@ angular.module('toutcast.controllers.slide', ['ngAnimate'])
           function (err)
           {
             console.error(JSON.stringify(err));
+            $state.go('app.home.feed');
           });
       });
 
