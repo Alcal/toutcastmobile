@@ -1,6 +1,6 @@
 angular.module('toutcast.controllers.map', [])
 
-  .controller('MainMapCtrl', function ($scope, $stateParams,$state, $compile, $cordovaGeolocation, $http, ionicMaterialInk, ToutService)
+  .controller('MainMapCtrl', function ($scope, $stateParams, $state, $compile, $cordovaGeolocation, $http, ionicMaterialInk, ToutService)
   {
     var options = {timeout: 10000, enableHighAccuracy: false};
     $scope.lastInfoWindow = null;
@@ -48,7 +48,7 @@ angular.module('toutcast.controllers.map', [])
       'background-color': 'white' // 3D effect to highlight the button
     };
 
-    $scope.loadMapElements = function()
+    $scope.loadMapElements = function ()
     {
       if ($scope.mapLoaded && $scope.locationLoaded)
       {
@@ -106,7 +106,6 @@ angular.module('toutcast.controllers.map', [])
       });
 
 
-
     ionicMaterialInk.displayEffect({duration: 600});
 
     var createMarker = function (index)
@@ -156,22 +155,33 @@ angular.module('toutcast.controllers.map', [])
       });
     };
 
-    $scope.goToFeed = function(toutId)
+    $scope.goToFeed = function (toutId)
     {
-      $state.go('app.home.feed-detail',{'toutId':toutId});
+      $state.go('app.home.feed-detail', {'toutId': toutId});
     }
 
     var getInfoWindow = function (tout)
     {
       return '<div class=\"item item-icon-left map-item ink ink-dark\" ng-click=\"goToFeed(\''
-        +tout.id
-        +'\')\" >'
+        + tout.id
+        + '\')\" >'
         + '<i class=\"icon positive ion-pricetags\"></i>'
         + '<h3>' + tout.title + '</h3>'
         + '<p>' + tout.content + '</p>'
+        + getRedemptionsString(tout)
         + '</div>';
     };
 
+    var getRedemptionsString = function (tout)
+    {
+      if (tout.maxRedemptions)
+      {
+        return '<p> Quedan ' + tout.remainingRedemptions
+          + ' de ' + tout.maxRedemptions + '</p>';
+      }
+      return '';
+    };
+    
     var handleMarkerClick = function ()
     {
       if ($scope.lastInfoWindow)

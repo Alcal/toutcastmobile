@@ -6,12 +6,13 @@
        on-refresh="refresh()">
      </ion-refresher>
    	<ion-item href="#/app/home/feed/{{t.id}}" class="item item-avatar animate-fade-slide-in-right" ng-repeat="t in touts">
-   		<img ng-ref="{{::t.logo}}" ng-show="t.logo"></img>
+   		<img ng-src="{{::t.logo}}" ng-show="t.logo"></img>
       <div class="tc-avatar-icon positive-bg circular-div" ng-hide="t.logo">
         <i class="icon light ion-pricetags"></i>
       </div>
    		<h3>{{::t.title}}</h3>
    		<p>{{::t.content}}</p>
+      <p ng-show="t.maxRedemptions">Quedan {{::t.remainingRedemptions}} de {{::t.maxRedemptions}}</p>
    	</ion-item>
    </ion-list>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.studios211.toutcast" version="0.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.studios211.toutcast" version="0.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>ToutCast</name>
   <description>
         A mobile platform designed to bring you the best offers close to you.
@@ -16,6 +16,7 @@
   <allow-navigation href="file:///android_asset/*"/>
   <allow-navigation href="http://code.jquery.com/*"/>
   <allow-navigation href="https://toutcastservices.herokuapp.com/*"/>
+  <allow-navigation href="https://lh3.googleusercontent.com/*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
