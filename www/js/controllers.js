@@ -1,7 +1,7 @@
-angular.module('toutcast.controllers', 
+angular.module('toutcast.controllers',
   ['toutcast.controllers.map',
-    'toutcast.controllers.feed', 
-    'toutcast.controllers.slide', 
+    'toutcast.controllers.feed',
+    'toutcast.controllers.slide',
     'toutcast.controllers.login',
     'toutcast.controllers.tabs'])
 
@@ -31,6 +31,10 @@ angular.module('toutcast.controllers',
   // Triggered in the login modal to close it
   $scope.closeLogin = function() {
     $scope.modal.hide();
+  };
+
+  $scope.refreshUser = function() {
+    $scope.user = UserService.getUser();
   };
 
   // Open the login modal
@@ -124,6 +128,3 @@ angular.module('toutcast.controllers',
 .controller('LandingCtrl', function($scope, $stateParams, ionicMaterialInk) {
   ionicMaterialInk.displayEffect({duration:600});
 })
-
-
-
