@@ -43,6 +43,11 @@ angular.module('toutcast.controllers',
     ionicMaterialInk.displayEffect({duration:600});
   };
 
+  $scope.logOut = function () {
+    ToutUser.logout();
+    $rootScope.isAuthenticated = false;
+  };
+
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
 
