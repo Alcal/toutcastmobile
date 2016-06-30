@@ -15,13 +15,15 @@ angular.module('toutcast.controllers.login', [])
 
     $scope.signUp = function ()
     {
+      $scope.errorState.state = false;
       if($scope.credentials.password!=$scope.credentials.repeatedPassword)
       {
-        //TODO: handle password mismatch error
+          $scope.errorState.message = "El password debe coincidir";
+          $scope.errorState.state = true;
+          return;
       }
       var signupSuccess = function (data)
       {
-
         var loginSuccess = function(data)
         {
           UserService.setUser(data.user);
@@ -44,10 +46,10 @@ angular.module('toutcast.controllers.login', [])
           switch(errorResponse.data.error.code)
           {
             case 11000:
-                  $scope.errorState.message = "This email is already taken";
+                  $scope.errorState.message = "Este usuario ya existe";
                   break;
             default:
-                  $scope.errorState.message = "Unexpected error";
+                  $scope.errorState.message = "Error inesperado";
           }
           $scope.errorState.state = true;
         }

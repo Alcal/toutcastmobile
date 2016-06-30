@@ -34,7 +34,7 @@ angular.module('toutcast', ['ionic','ionic.service.core','ngCordova','toutcast.c
 
     var push = new Ionic.Push({
       "onNotification": function(notification) {
-        $state.go('app.home.map');
+        $state.go('app.home.map',{'location':notification.payload.location});
       },
       "onRegister": function(data) {
 

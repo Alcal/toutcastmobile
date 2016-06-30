@@ -1,6 +1,6 @@
 angular.module('toutcast.controllers.map', [])
 
-  .controller('MainMapCtrl', function ($scope, $stateParams, $state, $compile, $cordovaGeolocation, $http, ionicMaterialInk, ToutService)
+  .controller('MainMapCtrl', function ($scope, $stateParams, $state, $compile, $cordovaGeolocation, ionicMaterialInk, ToutService)
   {
     var options = {timeout: 10000, enableHighAccuracy: false};
     $scope.lastInfoWindow = null;

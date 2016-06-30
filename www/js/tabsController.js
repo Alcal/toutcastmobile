@@ -3,8 +3,7 @@
  */
 
 angular.module('toutcast.controllers.tabs', [])
-  .controller('TabsCtrl',
-    function ($scope, $state)
+  .controller('TabsCtrl', function ($scope, $state)
     {
       $scope.resetFeed = function ()
       {
