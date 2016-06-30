@@ -2,6 +2,12 @@ angular.module('toutcast.controllers.map', [])
 
   .controller('MainMapCtrl', function ($scope, $stateParams, $state, $compile, $cordovaGeolocation, ionicMaterialInk, ToutService)
   {
+    $scope.$on('$ionicView.enter', function (event)
+    {
+      console.log('The stateParams are: '+JSON.stringify($stateParams));
+      $scope.focusLocation = $stateParams.location;
+
+    });
     var options = {timeout: 10000, enableHighAccuracy: false};
     $scope.lastInfoWindow = null;
 
@@ -50,10 +56,25 @@ angular.module('toutcast.controllers.map', [])
 
     $scope.loadMapElements = function ()
     {
-      if ($scope.mapLoaded && $scope.locationLoaded)
+      if ($scope.mapLoaded && $scope.locationLoaded && !$scope.focusLocation)
       {
         $scope.map.setCenter($scope.latLng);
-        ToutService.all.then(
+        $scope.loadTouts();
+      }
+    };
+
+    $scope.loadMapElementsFocused = function()
+    {
+      if ($scope.mapLoaded && $scope.focusLocation)
+      {
+        $scope.map.setCenter($scope.focusLocation);
+        $scope.loadTouts();
+      }
+    };
+
+    $scope.loadTouts = function()
+    {
+      ToutService.all.then(
           function (data)
           {
             $scope.touts = data;
@@ -76,8 +97,7 @@ angular.module('toutcast.controllers.map', [])
           {
             console.error(JSON.stringify(toutError));
           })
-      }
-    };
+    }
 
     $cordovaGeolocation.getCurrentPosition(options).then(
       function (position)
@@ -158,7 +178,7 @@ angular.module('toutcast.controllers.map', [])
     $scope.goToFeed = function (toutId)
     {
       $state.go('app.home.feed-detail', {'toutId': toutId});
-    }
+    };
 
     var getInfoWindow = function (tout)
     {
